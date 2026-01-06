@@ -391,6 +391,7 @@ class PlaybookLLMExecution(LLMExecution):
         say_has_placeholders = False  # Track if current Say has {$var} placeholders
         say_end_pattern = '")'  # Tracks closing pattern for Say content
         say_quote_type: Optional[str] = None  # "single" or "triple"
+        indented_code_detected = False  # Track if indented code has been detected
 
         # Get LLM messages
         messages = prompt.messages
@@ -427,6 +428,15 @@ class PlaybookLLMExecution(LLMExecution):
                 )
             ):
                 buffer += chunk
+
+                # Check if buffer contains any indented line (line starting with whitespace)
+                if not indented_code_detected and "\n" in buffer:
+                    # Look through all complete lines for indentation
+                    lines = buffer.split("\n")
+                    for line in lines[:-1]:  # Exclude last line (might be incomplete)
+                        if line and line[0] in (" ", "\t"):
+                            indented_code_detected = True
+                            break
 
                 # Update the AssistantResponseLLMMessage with the actual response
                 self.llm_response_msg.set_content(buffer)
@@ -485,7 +495,7 @@ class PlaybookLLMExecution(LLMExecution):
                             )
                             should_attempt_streaming = (
                                 is_human_recipient or enable_agent_streaming
-                            )
+                            ) and not indented_code_detected
 
                             if should_attempt_streaming:
                                 in_say_call = True

@@ -163,3 +163,77 @@ async def test_streams_triple_quoted_say_split(monkeypatch):
     # Triple-quoted message should complete with content stripped of quotes
     assert agent.stream_completions[-1] == "Hello\nWorld!"
     assert execution.streaming_execution_result == "executed"
+
+
+@pytest.mark.asyncio
+async def test_streams_say_before_indented_code(monkeypatch):
+    """Say() calls before indented code should stream normally."""
+    chunks = ['Say("human", "Hello world")\n', "if x > 10:\n"]
+    agent, buffer, execution = await _run_stream(monkeypatch, chunks)
+
+    assert buffer == "".join(chunks)
+    # First Say() should have streamed
+    assert agent.stream_updates
+    assert agent.stream_completions[-1] == "Hello world"
+
+
+@pytest.mark.asyncio
+async def test_no_stream_after_indented_code(monkeypatch):
+    """Say() calls after indented code should not stream."""
+    chunks = ["if x > 10:\n", '    Say("human", "Conditional message")\n']
+    agent, buffer, execution = await _run_stream(monkeypatch, chunks)
+
+    assert buffer == "".join(chunks)
+    # Say() after indented code should not stream
+    assert not agent.stream_updates
+    assert not agent.stream_completions
+
+
+@pytest.mark.asyncio
+async def test_no_stream_multiple_say_after_indented_code(monkeypatch):
+    """Multiple Say() calls after indented code should not stream."""
+    chunks = [
+        "if x > 10:\n",
+        '    Say("human", "First conditional")\n',
+        '    Say("human", "Second conditional")\n',
+        'Say("human", "After block")\n',
+    ]
+    agent, buffer, execution = await _run_stream(monkeypatch, chunks)
+
+    assert buffer == "".join(chunks)
+    # No Say() calls should stream once indented code is detected
+    assert not agent.stream_updates
+    assert not agent.stream_completions
+
+
+@pytest.mark.asyncio
+async def test_no_stream_after_nested_indented_code(monkeypatch):
+    """Say() calls after nested indented code should not stream."""
+    chunks = [
+        "for i in range(5):\n",
+        "    if x > 10:\n",
+        '        Say("human", "Nested conditional")\n',
+        'Say("human", "After loops")\n',
+    ]
+    agent, buffer, execution = await _run_stream(monkeypatch, chunks)
+
+    assert buffer == "".join(chunks)
+    # No Say() calls should stream once indented code is detected
+    assert not agent.stream_updates
+    assert not agent.stream_completions
+
+
+@pytest.mark.asyncio
+async def test_no_stream_indented_comment_triggers_flag(monkeypatch):
+    """Indented comments should still trigger the indentation flag."""
+    chunks = [
+        'Say("human", "Before comment")\n',
+        "    # This is a comment\n",
+        'Say("human", "After comment")\n',
+    ]
+    agent, buffer, execution = await _run_stream(monkeypatch, chunks)
+
+    assert buffer == "".join(chunks)
+    # First Say() should stream, but second should not due to indented comment
+    assert len(agent.stream_updates) == 1
+    assert agent.stream_completions[-1] == "Before comment"
