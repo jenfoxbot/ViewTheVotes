@@ -9,6 +9,7 @@ import time
 import uuid
 from typing import Any, Dict, Optional
 
+from playbooks.core.constants import EOM
 from playbooks.core.events import (
     AgentCreatedEvent,
     AgentTerminatedEvent,
@@ -497,6 +498,10 @@ class LangfuseEventHandler:
     def _handle_message_received(self, event: MessageReceivedEvent) -> None:
         """Handle message received by creating an event span."""
         try:
+            # Skip EOM (End of Message) markers
+            if event.content == EOM:
+                return
+
             langfuse = LangfuseHelper.instance()
             if not langfuse.auth_check():
                 return
@@ -519,6 +524,7 @@ class LangfuseEventHandler:
                 name=f"📥 {event.sender_klass} -> {event.recipient_klass}",
                 as_type="event",
                 trace_context=trace_context,
+                output=event.content,
                 metadata={
                     "message_id": event.message_id,
                     "sender": event.sender_klass,

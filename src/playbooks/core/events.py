@@ -205,6 +205,7 @@ class MessageReceivedEvent(Event):
     recipient_klass: str = ""
     sender_id: str = ""
     sender_klass: str = ""
+    content: str = ""
 
 
 @dataclass(frozen=True)

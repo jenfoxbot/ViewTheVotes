@@ -74,6 +74,7 @@ class MessagingMixin:
                         else str(message.sender_id)
                     ),
                     sender_klass=message.sender_klass,
+                    content=str(message.content),
                 )
             )
 
