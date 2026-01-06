@@ -8,7 +8,6 @@ from typing import TYPE_CHECKING, Any, Dict, List, Optional, Protocol
 from playbooks.agents.ai_agent import AIAgent
 from playbooks.agents.human_agent import HumanAgent
 from playbooks.agents.local_ai_agent import LocalAIAgent
-from playbooks.config import config
 from playbooks.core.exceptions import KlassNotFoundError
 from playbooks.core.identifiers import AgentID, MeetingID
 from playbooks.core.message import Message, MessageType
@@ -69,7 +68,7 @@ class RollingMessageCollector:
         self._background_tasks: set = set()
 
     async def add_message(self, message: Message) -> None:
-        """Add a message to the buffer and reset the rolling timeout.
+        """Add a message to the buffer. Human messages trigger immediate flush.
 
         Args:
             message: Message to add to the buffer
@@ -81,6 +80,14 @@ class RollingMessageCollector:
 
             # Add message to buffer
             self.buffer.append(message)
+
+            # Check if message is from human - if so, flush immediately
+            if message.sender_id.id == "human":
+                debug(
+                    f"RollingMessageCollector: Human message received, flushing {len(self.buffer)} messages immediately"
+                )
+                await self._deliver_now()
+                return
 
             # Check if we've exceeded absolute maximum wait time
             if self.first_message_time:
@@ -277,14 +284,6 @@ class MeetingManager:
         self.meeting_message_handler = MeetingMessageHandler(
             self.agent_id, self.agent_klass
         )
-
-        # Initialize rolling message collector with config timeouts
-        self.message_collector = RollingMessageCollector(
-            timeout_seconds=config.meeting_message_batch_timeout,
-            max_batch_wait=config.meeting_message_batch_max_wait,
-            task_factory=self._create_background_task,
-        )
-        self.message_collector.set_delivery_callback(self._deliver_collected_messages)
 
         # Track background tasks for proper cleanup
         self._background_tasks: set = set()
@@ -761,20 +760,20 @@ class MeetingManager:
         return None
 
     async def _add_message_to_buffer(self, message: Message) -> bool:
-        """Add a message to buffer and notify waiting processes.
+        """Handle meeting-specific message types immediately.
 
-        This is the single entry point for all incoming messages.
-        Handles meeting invitations and responses immediately.
-        Meeting broadcasts are batched with a rolling timeout to minimize thrashing.
+        Only intercepts messages that need special meeting logic:
+        - Meeting invitations (need immediate response)
+        - Meeting responses (signal events)
+        - Meeting kickoff banners (log only, don't queue)
 
-        Args:
-            message: Message to add to buffer
+        All other meeting broadcasts return False to let MessagingMixin handle batching.
 
         Returns:
-            True if message was handled, False otherwise
+            True if message was fully handled, False to let MessagingMixin batch it
         """
         debug(
-            f"Agent {self.agent_id}: _add_message_to_buffer: type={message.message_type}, from={message.sender_id}, preview={message.content[:60]}..."
+            f"Agent {self.agent_id}: _add_message_to_buffer: type={message.message_type}, from={message.sender_id}"
         )
 
         if message.message_type == MessageType.MEETING_INVITATION:
@@ -818,34 +817,12 @@ class MeetingManager:
                 self.agent.call_stack.add_llm_message(meeting_msg)
                 return True
 
-            # Batch other meeting broadcasts with rolling timeout to minimize thrashing
+            # All other meeting broadcasts: let MessagingMixin handle batching
             debug(
-                f"Agent {self.agent_id}: Adding meeting broadcast to collector (will wait up to {self.message_collector.timeout_seconds}s)"
+                f"Agent {self.agent_id}: Meeting broadcast will be batched by MessagingMixin"
             )
-            await self.message_collector.add_message(message)
-            return True
+            return False
         return False
-
-    async def _deliver_collected_messages(self, messages: List[Message]) -> None:
-        """Deliver batched messages to the agent's message queue.
-
-        This is called by RollingMessageCollector when the timeout expires.
-
-        Args:
-            messages: List of messages to deliver
-        """
-        debug(
-            f"Agent {self.agent_id}: _deliver_collected_messages: Delivering {len(messages)} batched messages to queue"
-        )
-        # Add all messages to the agent's message queue
-        for i, message in enumerate(messages):
-            debug(
-                f"Agent {self.agent_id}: Queuing message {i+1}/{len(messages)} from {message.sender_id}: {message.content[:60]}..."
-            )
-            await self.agent._message_queue.put(message)
-        debug(
-            f"Agent {self.agent_id}: All {len(messages)} messages queued successfully"
-        )
 
     async def flush_pending_messages(self, meeting_id: Optional[str] = None) -> None:
         """Force immediate delivery of buffered messages from RollingMessageCollector.
@@ -856,13 +833,13 @@ class MeetingManager:
         Args:
             meeting_id: Optional meeting ID (currently unused, reserved for future filtering)
         """
-        if self.message_collector:
-            buffer_size = len(self.message_collector.buffer)
+        if hasattr(self.agent, "_message_collector"):
+            buffer_size = len(self.agent._message_collector.buffer)
             if buffer_size > 0:
                 debug(
                     f"Agent {self.agent_id}: flush_pending_messages: Flushing {buffer_size} buffered messages"
                 )
-            await self.message_collector.flush()
+            await self.agent._message_collector.flush()
 
     async def _handle_meeting_invitation_immediately(self, message) -> None:
         """Handle meeting invitation immediately without buffering."""

@@ -6,6 +6,7 @@ import asyncio
 from typing import List, Optional
 
 from playbooks.agents.async_queue import AsyncMessageQueue
+from playbooks.config import config
 from playbooks.core.constants import EOM, EXECUTION_FINISHED
 from playbooks.core.events import MessageReceivedEvent, WaitForMessageEvent
 from playbooks.core.exceptions import ExecutionFinished
@@ -13,6 +14,7 @@ from playbooks.core.identifiers import AgentID, MeetingID
 from playbooks.core.message import Message, MessageType
 from playbooks.infrastructure.logging.debug_logger import debug
 from playbooks.llm.messages import AgentCommunicationLLMMessage
+from playbooks.meetings.meeting_manager import RollingMessageCollector
 
 
 class MessagingMixin:
@@ -22,26 +24,40 @@ class MessagingMixin:
         super().__init__(*args, **kwargs)
         self._message_queue = AsyncMessageQueue()
 
+        # Add unified message collector for all messages
+
+        self._message_collector = RollingMessageCollector(
+            timeout_seconds=config.message_batch_timeout,
+            max_batch_wait=config.message_batch_max_wait,
+            task_factory=(
+                self._create_background_task
+                if hasattr(self, "_create_background_task")
+                else None
+            ),
+        )
+        self._message_collector.set_delivery_callback(self._deliver_batched_messages)
+
     async def _add_message_to_buffer(self, message: Message) -> None:
         """Add a message to buffer and notify waiting processes.
 
-        This is the single entry point for all incoming messages.
-        Delegates to meeting manager if available, otherwise adds to message queue.
+        All messages go through the collector for unified batching.
+        Meeting manager can still intercept for invitation handling.
 
         Args:
             message: Message to add to buffer
         """
+        # Let meeting manager handle invitations/responses immediately
         if hasattr(self, "meeting_manager") and self.meeting_manager:
-            debug(f"{str(self)}: Adding message to meeting manager: {message}")
             message_handled = await self.meeting_manager._add_message_to_buffer(message)
             if message_handled:
                 return
 
-        debug(f"{str(self)}: Adding message to queue: {message}")
-        await self._message_queue.put(message)
+        # All other messages (direct agent-to-agent, meeting broadcasts) go through collector
+        debug(f"{str(self)}: Adding message to collector: {message}")
+        await self._message_collector.add_message(message)
 
         # Publish message received event for telemetry
-        if hasattr(self, "event_bus") and hasattr(self, "program"):
+        if hasattr(self, "event_bus") and self.event_bus and hasattr(self, "program"):
             self.event_bus.publish(
                 MessageReceivedEvent(
                     session_id=(
@@ -300,3 +316,36 @@ class MessagingMixin:
         self.call_stack.add_llm_message(agent_comm_msg)
 
         return messages
+
+    async def flush_pending_messages(self, meeting_id: Optional[str] = None) -> None:
+        """Force immediate delivery of buffered messages from RollingMessageCollector.
+
+        Called before prompt construction to ensure all agent communications
+        are included in the LLM context.
+
+        Args:
+            meeting_id: Optional meeting ID (currently unused, reserved for future filtering)
+        """
+        if hasattr(self, "_message_collector") and self._message_collector:
+            buffer_size = len(self._message_collector.buffer)
+            if buffer_size > 0:
+                debug(
+                    f"{str(self)}: flush_pending_messages: Flushing {buffer_size} buffered messages"
+                )
+            await self._message_collector.flush()
+
+    async def _deliver_batched_messages(self, messages: List[Message]) -> None:
+        """Deliver batched messages to the agent's message queue.
+
+        Called by RollingMessageCollector when timeout expires or human message flushes.
+
+        Args:
+            messages: List of messages to deliver
+        """
+        debug(f"{str(self)}: Delivering {len(messages)} batched messages to queue")
+        for i, message in enumerate(messages):
+            debug(
+                f"{str(self)}: Queuing message {i+1}/{len(messages)} from {message.sender_id}: {message.content[:60]}..."
+            )
+            await self._message_queue.put(message)
+        debug(f"{str(self)}: All {len(messages)} messages queued successfully")

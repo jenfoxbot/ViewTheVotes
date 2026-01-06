@@ -352,3 +352,57 @@ class TestRollingMessageCollector:
         # Should deliver via rolling timeout (not max wait)
         assert len(delivered_batches) == 1
         assert len(delivered_batches[0]) == 2
+
+    @pytest.mark.asyncio
+    async def test_human_message_triggers_immediate_flush(self):
+        """Test that human messages trigger immediate flush of batched agent messages."""
+        delivered_batches = []
+
+        async def delivery_callback(messages):
+            delivered_batches.append(messages)
+
+        collector = RollingMessageCollector(timeout_seconds=1.0, max_batch_wait=5.0)
+        collector.set_delivery_callback(delivery_callback)
+
+        # Send 2 agent messages
+        msg1 = Message(
+            sender_id=AgentID("agent-1"),
+            sender_klass="TestAgent",
+            recipient_id=AgentID("agent-2"),
+            recipient_klass="TestAgent",
+            message_type=MessageType.DIRECT,
+            content="Agent message 1",
+            meeting_id=None,
+        )
+        await collector.add_message(msg1)
+
+        msg2 = Message(
+            sender_id=AgentID("agent-2"),
+            sender_klass="TestAgent",
+            recipient_id=AgentID("agent-1"),
+            recipient_klass="TestAgent",
+            message_type=MessageType.DIRECT,
+            content="Agent message 2",
+            meeting_id=None,
+        )
+        await collector.add_message(msg2)
+
+        # Send human message - should flush immediately
+        human_msg = Message(
+            sender_id=AgentID("human"),
+            sender_klass="HumanAgent",
+            recipient_id=AgentID("agent-1"),
+            recipient_klass="TestAgent",
+            message_type=MessageType.DIRECT,
+            content="Human input",
+            meeting_id=None,
+        )
+        await collector.add_message(human_msg)
+
+        # Should deliver immediately (no waiting for 1s timeout)
+        await asyncio.sleep(0.01)
+
+        # Should have delivered all 3 messages in one batch
+        assert len(delivered_batches) == 1
+        assert len(delivered_batches[0]) == 3
+        assert delivered_batches[0][-1].content == "Human input"

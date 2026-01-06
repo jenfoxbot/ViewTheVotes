@@ -118,6 +118,12 @@ class TestChannelRouting:
             message_type=MessageType.DIRECT,
         )
 
+        # Flush pending messages for immediate delivery
+        await agent_b.flush_pending_messages()
+
+        # Wait a tiny bit for delivery to complete
+        await asyncio.sleep(0.01)
+
         # Agent B should have received the message
         assert agent_b._message_queue.size == 1
         msg = await agent_b._message_queue.peek()
@@ -175,6 +181,12 @@ class TestChannelRouting:
         # Should still have the same number of channels
         assert len(program.channels) == initial_channel_count
 
+        # Flush pending messages for immediate delivery
+        await agent_b.flush_pending_messages()
+
+        # Wait a tiny bit for delivery to complete
+        await asyncio.sleep(0.01)
+
         # Agent B should have received both messages
         assert agent_b._message_queue.size == 2
 
@@ -230,6 +242,12 @@ class TestChannelRouting:
         channel_id = program._make_channel_id(agent_a.id, "human")
         assert channel_id in program.channels
 
+        # Flush pending messages for immediate delivery
+        await human.flush_pending_messages()
+
+        # Wait a tiny bit for delivery to complete
+        await asyncio.sleep(0.01)
+
         # Human should receive the message
         assert human._message_queue.size == 1
 
@@ -261,7 +279,7 @@ class TestTargetedMessaging:
 
         # Flush pending messages to ensure they are delivered to the queue
         agent_b = mock_participants[1]
-        await agent_b.meeting_manager.flush_pending_messages(meeting_id)
+        await agent_b.flush_pending_messages()
 
         # Wait a bit for the async delivery task to complete
         await asyncio.sleep(0.1)
@@ -296,7 +314,7 @@ class TestTargetedMessaging:
         )
 
         # Flush pending messages
-        await agent_b.meeting_manager.flush_pending_messages(meeting_id)
+        await agent_b.flush_pending_messages()
         await asyncio.sleep(0.1)
 
         # Agent B should receive with targeting
@@ -326,7 +344,7 @@ class TestTargetedMessaging:
         )
 
         # Flush pending messages
-        await agent_b.meeting_manager.flush_pending_messages(meeting_id)
+        await agent_b.flush_pending_messages()
         await asyncio.sleep(0.1)
 
         # Agent B should receive without targeting metadata
