@@ -1433,7 +1433,7 @@ async def {self.bgn_playbook_name}(**kwargs) -> None:
         """
         return await self._current_executor.capture_yld(target)
 
-    async def Return(self, value: Any) -> None:
+    async def Return(self, value: Any = None) -> None:
         """Return value from playbook and set self.state._ for use in caller.
 
         Args:
