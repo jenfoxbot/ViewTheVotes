@@ -50,6 +50,7 @@ from playbooks.llm.messages import (
 
 from .llm_config import LLMConfig
 from .playbooks_lm_handler import PlaybooksLMHandler
+from .token_counter import get_messages_token_count, get_token_count
 
 # https://github.com/BerriAI/litellm/issues/2256#issuecomment-2041374430
 loggers = ["LiteLLM Proxy", "LiteLLM Router", "LiteLLM"]
@@ -427,10 +428,8 @@ async def get_completion(
             "Use @patch('playbooks.utils.llm_helper.get_completion') to mock LLM calls in unit tests."
         )
 
-    # Estimate input token count
-    input_token_count = (
-        sum(len(str(msg.get("content", ""))) for msg in messages) // 4
-    )  # Rough estimate
+    # Count input tokens
+    input_token_count = get_messages_token_count(messages, llm_config.model)
 
     # Publish LLM call started event
     if event_bus and agent_id and session_id:
@@ -487,7 +486,7 @@ async def get_completion(
             # Publish LLM call ended event for cache hit
             if event_bus and agent_id and session_id:
                 output_value = str(cache_value)
-                output_token_count = len(output_value) // 4  # Rough estimate
+                output_token_count = get_token_count(output_value, llm_config.model)
 
                 event_bus.publish(
                     LLMCallEndedEvent(
@@ -548,8 +547,10 @@ async def get_completion(
         # Publish LLM call ended event
         if event_bus and agent_id and session_id:
             output_token_count = (
-                len(str(full_response)) // 4 if full_response else 0
-            )  # Rough estimate
+                get_token_count(str(full_response), llm_config.model)
+                if full_response
+                else 0
+            )
             output_value = full_response if not error_occurred else None
 
             event_bus.publish(

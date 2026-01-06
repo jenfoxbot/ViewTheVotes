@@ -14,7 +14,6 @@ from playbooks.core.identifiers import AgentID, MeetingID
 from playbooks.core.message import Message, MessageType
 from playbooks.infrastructure.logging.debug_logger import debug
 from playbooks.llm.messages import AgentCommunicationLLMMessage
-from playbooks.meetings.meeting_manager import RollingMessageCollector
 
 
 class MessagingMixin:
@@ -25,6 +24,8 @@ class MessagingMixin:
         self._message_queue = AsyncMessageQueue()
 
         # Add unified message collector for all messages
+        # Lazy import to avoid circular dependency
+        from playbooks.meetings.meeting_manager import RollingMessageCollector
 
         self._message_collector = RollingMessageCollector(
             timeout_seconds=config.message_batch_timeout,

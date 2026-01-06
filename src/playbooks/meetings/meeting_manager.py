@@ -5,9 +5,6 @@ import logging
 from datetime import datetime
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, Protocol
 
-from playbooks.agents.ai_agent import AIAgent
-from playbooks.agents.human_agent import HumanAgent
-from playbooks.agents.local_ai_agent import LocalAIAgent
 from playbooks.core.exceptions import KlassNotFoundError
 from playbooks.core.identifiers import AgentID, MeetingID
 from playbooks.core.message import Message, MessageType
@@ -23,6 +20,7 @@ from playbooks.meetings.meeting_message_handler import MeetingMessageHandler
 from playbooks.playbook import LLMPlaybook, Playbook
 
 if TYPE_CHECKING:
+    from playbooks.agents.ai_agent import AIAgent
     from playbooks.agents.base_agent import BaseAgent
     from playbooks.program import Program
 
@@ -399,6 +397,9 @@ class MeetingManager:
         Returns:
             The created meeting
         """
+        # Lazy import to avoid circular dependency
+        from playbooks.agents.human_agent import HumanAgent
+
         meeting_id = self.program.meeting_id_registry.generate_meeting_id()
 
         # Create meeting record
@@ -547,6 +548,10 @@ class MeetingManager:
         Returns:
             Response message describing the invitation result
         """
+        # Lazy import to avoid circular dependency
+        from playbooks.agents.human_agent import HumanAgent
+        from playbooks.agents.local_ai_agent import LocalAIAgent
+
         # Check if the target agent is already a participant
         if meeting.is_participant(target_agent.id):
             pass
