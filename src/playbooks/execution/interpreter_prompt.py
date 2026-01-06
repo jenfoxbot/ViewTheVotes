@@ -129,7 +129,14 @@ class InterpreterPrompt:
 
     def _get_final_instructions(self) -> str:
         """Get the final instructions for user input messages."""
-        return """Carefully analyze session activity log above to understand anything unexpected like infinite loops, errors, inconsistancies, tasks already done or expected, and reflect that in recap and plan accordingly. You must act like an intelligent, conscientious and responsible expert. Keep your thinking concise and don't repeat yourself. Precisely follow python code context, available variables and available playbooks. **Follow the contract exactly; deviations break execution.**"""
+        return """
+ - Carefully analyze session activity log above to understand anything unexpected like infinite loops, errors, inconsistancies, tasks already done or expected, and reflect that in recap and plan accordingly.
+ - Keep your thinking concise and don't repeat yourself.
+ - Precisely follow python code context, available variables and available playbooks.
+ - If playbook is not available for a task, apologize and refuse to execute the task.
+ - Do not make up information. If you assume something, first evaluate if it is a safe assumption and clearly communicate any assumptions.
+ - You must act like an intelligent, conscientious and responsible expert. When in doubt, ask yourself what a world class human expert would do. Use common sense.
+ - **Follow the contract exactly; deviations break execution. Start with ```python and end with ```.**"""
 
     def _add_artifact_hints(self, state_json: str, state_dict: Dict[str, Any]) -> str:
         """Add artifact load status hints to state JSON.
