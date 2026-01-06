@@ -254,24 +254,22 @@ await self.Step("Main:02:YLD")
 await self.Yield("exit")
 ```
 
-**Ex 3 – Python computable triggers**
-If a trigger condition can be checked in Python, produce appropriate code to check the condition.
+**Ex 3 – Computable triggers**
 e.g. - T1:CND When checkout amount is more than $50, trigger the Offer playbook
 
 ```python
 # execution_id: 3
 # recap: user provided self.state.amount=200
 # plan: Checkout:01:QUE done, execute Checkout:02:QUE, continue checkout
-# trig? maybe, checkout amount may be more than $50 so T1:CND may match
-if self.state.amount > 50:
-    # think: Offer:01:CND matched, triggering the Offer playbook
-    await self.LogTrigger("Offer:01:CND")
-    await self.Offer(code="SPRING", total=self.state.amount)
+# trig? yes, amount>50 so T1:CND matches
+await self.LogTrigger("Offer:01:CND")
+# think: Offer:01:CND matched, triggering the Offer playbook
+await self.Offer(code="SPRING", total=self.state.amount)
 ...
 ```
 
-**Ex 3b – Semantic triggers**
-If a trigger condition cannot be evaluated in Python, use yield to get called back.
+**Ex 3b – Yielding to compute triggers**
+If a trigger condition depends on a variable that is not computed yet, yield
 e.g. - T2:CND If user would be unhappy with the offer, execute GetBetterOffer
 
 ```python
@@ -279,7 +277,7 @@ e.g. - T2:CND If user would be unhappy with the offer, execute GetBetterOffer
 ...
 await self.Step("Main:08:EXE")
 self.state.offer = await self.GetOffer()
-# trig? maybe, user may be unhappy with the offer so T2:CND may match. I cannot evaluate happiness in Python, so yield.
+# trig? user may be unhappy with the offer so T2:CND may match. I must yield to get the offer first.
 await self.Yield("call")
 ```
 
@@ -430,7 +428,6 @@ Think carefully when asked to communicate with or call a playbook from another a
 - Main:03:EXE $department = "Accounting"
 - Main:04:EXE count = 20
 - Main:05:EXE If $company is available, Say(user, say company name)
-- Main:06:EXE If region is available, Say(user, say region name)
 
 ```python
 # execution_id: 11
@@ -444,14 +441,9 @@ count = 20
 # trig? no
 # yld? no
 await self.Step("Main:05:EXE")
-if hasattr(self.state, "company") and self.state.company:
-  self.Say(f"Company is {self.state.company})
+# think: This is an if condition. I will evaluate the condition
+self.state.company_available = hasattr(self.state, "company") and self.state.company
 # trig? no
-# yld? no
-await self.Step("Main:06:EXE")
-if "region" in locals() and region:
-  self.Say(f"Region is {region})
-# trig? no
-# yld? no
-...
+# yld? yes, to get value of company_available
+await self.Yld("call")
 ```
