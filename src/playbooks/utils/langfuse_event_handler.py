@@ -52,6 +52,9 @@ class LangfuseEventHandler:
         self._current_llm_generation: Dict[str, Any] = (
             {}
         )  # agent_id -> current active LLM generation
+        self._llm_input_tokens: Dict[str, int] = (
+            {}
+        )  # span_key -> input tokens for correlation
         self._playbook_stack: Dict[str, list] = (
             {}
         )  # agent_id -> stack of active playbook spans
@@ -177,6 +180,10 @@ class LangfuseEventHandler:
             self._agent_names.pop(event.agent_id, None)
             self._llm_call_counters.pop(event.agent_id, None)
             self._current_llm_generation.pop(event.agent_id, None)
+            # Clean up LLM input tokens for this agent's spans
+            keys_to_remove = [k for k in self._llm_input_tokens if event.agent_id in k]
+            for k in keys_to_remove:
+                self._llm_input_tokens.pop(k, None)
             self._playbook_stack.pop(event.agent_id, None)
             self._method_call_stack.pop(event.agent_id, None)
 
@@ -298,10 +305,12 @@ class LangfuseEventHandler:
                 trace_context=trace_context,
                 model=event.model,
                 input=event.input,
+                usage_details={
+                    "input": event.input_tokens,
+                    "output": 0,  # Will be updated on end
+                },
                 metadata={
                     **event.metadata,
-                    "input_tokens": event.input_tokens,
-                    "output_tokens": 0,  # Will be updated on end
                     "stream": event.stream,
                     "call_number": call_number,
                 },
@@ -318,6 +327,8 @@ class LangfuseEventHandler:
             call_key = f"llm_{event.agent_id}_{event.model}_{id(event)}"
             if hasattr(generation, "id") and generation.id:
                 self._active_spans[call_key] = generation
+                # Store input tokens for correlation with end event
+                self._llm_input_tokens[call_key] = event.input_tokens
                 # Track as the current active LLM generation for this agent
                 self._current_llm_generation[event.agent_id] = generation
 
@@ -337,12 +348,18 @@ class LangfuseEventHandler:
             ]
 
             for span_key, span in langfuse_spans:
-                # Build update kwargs - output must be passed to update(), not end()
+                # Get stored input tokens for this span
+                input_tokens = self._llm_input_tokens.get(span_key, 0)
+
+                # Build update kwargs - output and usage_details must be passed to update(), not end()
                 update_kwargs = {
+                    "usage_details": {
+                        "input": input_tokens,
+                        "output": event.output_tokens,
+                    },
                     "metadata": {
-                        "output_tokens": event.output_tokens,
                         "cache_hit": event.cache_hit,
-                    }
+                    },
                 }
 
                 if event.output is not None:
@@ -353,6 +370,7 @@ class LangfuseEventHandler:
                 span.update(**update_kwargs)
                 span.end()
                 self._active_spans.pop(span_key, None)
+                self._llm_input_tokens.pop(span_key, None)  # Clean up stored tokens
 
                 # Clear current LLM generation if this is the active one
                 if self._current_llm_generation.get(event.agent_id) is span:
