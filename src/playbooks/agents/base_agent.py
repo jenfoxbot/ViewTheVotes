@@ -533,7 +533,8 @@ class BaseAgent(MessagingMixin, ABC, metaclass=BaseAgentMeta):
             AttributeError: If the attribute is not a playbook and doesn't exist
         """
         # Check if playbooks dictionary exists and contains the requested name
-        if hasattr(self, "playbooks") and name in self.playbooks:
+        # Use __dict__ directly to avoid recursion via hasattr()
+        if "playbooks" in self.__dict__ and name in self.playbooks:
             # Return a wrapper that calls the playbook's execute() method
             async def playbook_wrapper(*args, **kwargs):
                 success, result = await self.execute_playbook(name, args, kwargs)
