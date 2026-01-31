@@ -42,7 +42,7 @@ if command -v tmux &> /dev/null; then
     
     # Start servers in each pane
     tmux send-keys -t deepagent-mcp:0.0 'echo "Starting Filesystem MCP (port 8000)..." && fastmcp run filesystem_mcp.py -t streamable-http --port 8000' C-m
-    tmux send-keys -t deepagent-mcp:0.1 'echo "Starting Web Tools MCP (port 8001)..." && fastmcp run customagents/web_tools_mcp.py -t streamable-http --port 8001' C-m
+    tmux send-keys -t deepagent-mcp:0.1 'echo "Starting Web Tools MCP (port 8001)..." && fastmcp run web_tools_mcp.py -t streamable-http --port 8001' C-m
     tmux send-keys -t deepagent-mcp:0.2 'echo "Starting Shell MCP (port 8002)..." && fastmcp run shell_mcp.py -t streamable-http --port 8002' C-m
     
     echo "✓ MCP servers started in tmux session 'deepagent-mcp'"
@@ -66,7 +66,7 @@ else
     FILESYSTEM_PID=$!
     
     echo "Starting Web Tools MCP (port 8001)..."
-    fastmcp run customagents/web_tools_mcp.py -t streamable-http --port 8001 > web_tools_mcp.log 2>&1 &
+    fastmcp run web_tools_mcp.py -t streamable-http --port 8001 > web_tools_mcp.log 2>&1 &
     WEBTOOLS_PID=$!
     
     echo "Starting Shell MCP (port 8002)..."

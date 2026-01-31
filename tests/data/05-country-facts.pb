@@ -36,5 +36,5 @@ This agent provides web search capabilities using the Web Tools MCP server.
 remote:
   type: mcp
   transport: memory
-  url: memory://./../../examples/deepagents/web_tools_mcp.py
+  url: memory://./../../customagents/web_tools_mcp.py
  
