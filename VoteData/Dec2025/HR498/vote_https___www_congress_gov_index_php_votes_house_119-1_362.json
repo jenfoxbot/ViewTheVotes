@@ -1,0 +1,2685 @@
+{
+  "vote_url": "https://www.congress.gov/index.php/votes/house/119-1/362",
+  "title": "House Roll Call Vote 362 | Congress.gov | Library of Congress",
+  "summary": "Examples: \"Trade Relations\", \"Export Controls\"\n\nExamples: hr5, h.r.5, sjres8, sa2, pl116-21, 86Stat1326\n\nExamples: trade sanctions reform, small modular reactor\n\nExamples: hr5, h.r.5, sjres8, s2, 90stat2495",
+  "counts": {
+    "yea": 215,
+    "nay": 201
+  },
+  "members": {},
+  "tables": [
+    {
+      "headers": [
+        "Date",
+        "Vote Question",
+        "Description",
+        "Vote Type",
+        "Result"
+      ],
+      "rows": [
+        {
+          "0": "12/18/2025"
+        },
+        {
+          "0": "On Passage"
+        },
+        {
+          "0": "H.R.498 - On passage Passed by the Yeas and Nays: 215 - 201 (Roll no. 362)."
+        },
+        {
+          "0": "Yea-and-Nay"
+        },
+        {
+          "0": "Passed - Yea: 215 | Nay: 201 (R 211-0 Pres=0 NV=9, D 4-201 Pres=0 NV=8, I 0-0 Pres=0 NV=0)"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "",
+        "YEAS/AYES",
+        "NAYS/NOES",
+        "PRESENT",
+        "NOT VOTING"
+      ],
+      "rows": [
+        {
+          "": "DEMOCRATIC",
+          "YEAS/AYES": "4",
+          "NAYS/NOES": "201",
+          "PRESENT": "0",
+          "NOT VOTING": "8"
+        },
+        {
+          "": "REPUBLICAN",
+          "YEAS/AYES": "211",
+          "NAYS/NOES": "0",
+          "PRESENT": "0",
+          "NOT VOTING": "9"
+        },
+        {
+          "": "INDEPENDENT",
+          "YEAS/AYES": "0",
+          "NAYS/NOES": "0",
+          "PRESENT": "0",
+          "NOT VOTING": "0"
+        },
+        {
+          "": "TOTALS",
+          "YEAS/AYES": "215",
+          "NAYS/NOES": "201",
+          "PRESENT": "0",
+          "NOT VOTING": "17"
+        }
+      ]
+    },
+    {
+      "headers": [
+        "Representative",
+        "Party",
+        "State",
+        "Vote"
+      ],
+      "rows": [
+        {
+          "Representative": "Adams, Alma S. [D-NC]",
+          "Party": "Democratic",
+          "State": "North Carolina",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Aderholt, Robert B. [R-AL]",
+          "Party": "Republican",
+          "State": "Alabama",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Aguilar, Pete [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Alford, Mark [R-MO]",
+          "Party": "Republican",
+          "State": "Missouri",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Allen, Rick W. [R-GA]",
+          "Party": "Republican",
+          "State": "Georgia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Amo, Gabe [D-RI]",
+          "Party": "Democratic",
+          "State": "Rhode Island",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Amodei, Mark E. [R-NV]",
+          "Party": "Republican",
+          "State": "Nevada",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Ansari, Yassamin [D-AZ]",
+          "Party": "Democratic",
+          "State": "Arizona",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Arrington, Jodey C. [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Auchincloss, Jake [D-MA]",
+          "Party": "Democratic",
+          "State": "Massachusetts",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Babin, Brian [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Bacon, Don [R-NE]",
+          "Party": "Republican",
+          "State": "Nebraska",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Baird, James R. [R-IN]",
+          "Party": "Republican",
+          "State": "Indiana",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Balderson, Troy [R-OH]",
+          "Party": "Republican",
+          "State": "Ohio",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Balint, Becca [D-VT]",
+          "Party": "Democratic",
+          "State": "Vermont",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Barr, Andy [R-KY]",
+          "Party": "Republican",
+          "State": "Kentucky",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Barragán, Nanette Diaz [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Barrett, Tom [R-MI]",
+          "Party": "Republican",
+          "State": "Michigan",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Baumgartner, Michael [R-WA]",
+          "Party": "Republican",
+          "State": "Washington",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Bean, Aaron [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Beatty, Joyce [D-OH]",
+          "Party": "Democratic",
+          "State": "Ohio",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Begich, Nicholas J. [R-AK]",
+          "Party": "Republican",
+          "State": "Alaska",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Bell, Wesley [D-MO]",
+          "Party": "Democratic",
+          "State": "Missouri",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Bentz, Cliff [R-OR]",
+          "Party": "Republican",
+          "State": "Oregon",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Bera, Ami [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Bergman, Jack [R-MI]",
+          "Party": "Republican",
+          "State": "Michigan",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Beyer, Donald S. [D-VA]",
+          "Party": "Democratic",
+          "State": "Virginia",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Bice, Stephanie I. [R-OK]",
+          "Party": "Republican",
+          "State": "Oklahoma",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Biggs, Andy [R-AZ]",
+          "Party": "Republican",
+          "State": "Arizona",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Biggs, Sheri [R-SC]",
+          "Party": "Republican",
+          "State": "South Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Bilirakis, Gus M. [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Bishop, Sanford D. [D-GA]",
+          "Party": "Democratic",
+          "State": "Georgia",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Boebert, Lauren [R-CO]",
+          "Party": "Republican",
+          "State": "Colorado",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Bonamici, Suzanne [D-OR]",
+          "Party": "Democratic",
+          "State": "Oregon",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Bost, Mike [R-IL]",
+          "Party": "Republican",
+          "State": "Illinois",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Boyle, Brendan F. [D-PA]",
+          "Party": "Democratic",
+          "State": "Pennsylvania",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Brecheen, Josh [R-OK]",
+          "Party": "Republican",
+          "State": "Oklahoma",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Bresnahan, Robert P. [R-PA]",
+          "Party": "Republican",
+          "State": "Pennsylvania",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Brown, Shontel M. [D-OH]",
+          "Party": "Democratic",
+          "State": "Ohio",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Brownley, Julia [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Buchanan, Vern [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Budzinski, Nikki [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Burchett, Tim [R-TN]",
+          "Party": "Republican",
+          "State": "Tennessee",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Burlison, Eric [R-MO]",
+          "Party": "Republican",
+          "State": "Missouri",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Bynum, Janelle S. [D-OR]",
+          "Party": "Democratic",
+          "State": "Oregon",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Calvert, Ken [R-CA]",
+          "Party": "Republican",
+          "State": "California",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Cammack, Kat [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Carbajal, Salud O. [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Carey, Mike [R-OH]",
+          "Party": "Republican",
+          "State": "Ohio",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Carson, André [D-IN]",
+          "Party": "Democratic",
+          "State": "Indiana",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Carter, Earl L. \"Buddy\" [R-GA]",
+          "Party": "Republican",
+          "State": "Georgia",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Carter, John R. [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Carter, Troy A. [D-LA]",
+          "Party": "Democratic",
+          "State": "Louisiana",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Casar, Greg [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Case, Ed [D-HI]",
+          "Party": "Democratic",
+          "State": "Hawaii",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Casten, Sean [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Castor, Kathy [D-FL]",
+          "Party": "Democratic",
+          "State": "Florida",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Castro, Joaquin [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Cherfilus-McCormick, Sheila [D-FL]",
+          "Party": "Democratic",
+          "State": "Florida",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Chu, Judy [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Ciscomani, Juan [R-AZ]",
+          "Party": "Republican",
+          "State": "Arizona",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Cisneros, Gilbert Ray [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Clark, Katherine M. [D-MA]",
+          "Party": "Democratic",
+          "State": "Massachusetts",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Clarke, Yvette D. [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Cleaver, Emanuel [D-MO]",
+          "Party": "Democratic",
+          "State": "Missouri",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Cline, Ben [R-VA]",
+          "Party": "Republican",
+          "State": "Virginia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Cloud, Michael [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Clyburn, James E. [D-SC]",
+          "Party": "Democratic",
+          "State": "South Carolina",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Clyde, Andrew S. [R-GA]",
+          "Party": "Republican",
+          "State": "Georgia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Cohen, Steve [D-TN]",
+          "Party": "Democratic",
+          "State": "Tennessee",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Cole, Tom [R-OK]",
+          "Party": "Republican",
+          "State": "Oklahoma",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Collins, Mike [R-GA]",
+          "Party": "Republican",
+          "State": "Georgia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Comer, James [R-KY]",
+          "Party": "Republican",
+          "State": "Kentucky",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Conaway, Herbert C. [D-NJ]",
+          "Party": "Democratic",
+          "State": "New Jersey",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Correa, J. Luis [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Costa, Jim [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Courtney, Joe [D-CT]",
+          "Party": "Democratic",
+          "State": "Connecticut",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Craig, Angie [D-MN]",
+          "Party": "Democratic",
+          "State": "Minnesota",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Crane, Elijah [R-AZ]",
+          "Party": "Republican",
+          "State": "Arizona",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Crank, Jeff [R-CO]",
+          "Party": "Republican",
+          "State": "Colorado",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Crawford, Eric A. \"Rick\" [R-AR]",
+          "Party": "Republican",
+          "State": "Arkansas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Crenshaw, Dan [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Crockett, Jasmine [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Crow, Jason [D-CO]",
+          "Party": "Democratic",
+          "State": "Colorado",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Cuellar, Henry [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Davids, Sharice [D-KS]",
+          "Party": "Democratic",
+          "State": "Kansas",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Davidson, Warren [R-OH]",
+          "Party": "Republican",
+          "State": "Ohio",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Davis, Danny K. [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Davis, Donald G. [D-NC]",
+          "Party": "Democratic",
+          "State": "North Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "De La Cruz, Monica [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Dean, Madeleine [D-PA]",
+          "Party": "Democratic",
+          "State": "Pennsylvania",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "DeGette, Diana [D-CO]",
+          "Party": "Democratic",
+          "State": "Colorado",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "DeLauro, Rosa L. [D-CT]",
+          "Party": "Democratic",
+          "State": "Connecticut",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "DelBene, Suzan K. [D-WA]",
+          "Party": "Democratic",
+          "State": "Washington",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Deluzio, Christopher R. [D-PA]",
+          "Party": "Democratic",
+          "State": "Pennsylvania",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "DeSaulnier, Mark [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "DesJarlais, Scott [R-TN]",
+          "Party": "Republican",
+          "State": "Tennessee",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Dexter, Maxine [D-OR]",
+          "Party": "Democratic",
+          "State": "Oregon",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Diaz-Balart, Mario [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Dingell, Debbie [D-MI]",
+          "Party": "Democratic",
+          "State": "Michigan",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Doggett, Lloyd [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Donalds, Byron [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Downing, Troy [R-MT]",
+          "Party": "Republican",
+          "State": "Montana",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Dunn, Neal P. [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Edwards, Chuck [R-NC]",
+          "Party": "Republican",
+          "State": "North Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Elfreth, Sarah [D-MD]",
+          "Party": "Democratic",
+          "State": "Maryland",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Ellzey, Jake [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Emmer, Tom [R-MN]",
+          "Party": "Republican",
+          "State": "Minnesota",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Escobar, Veronica [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Espaillat, Adriano [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Estes, Ron [R-KS]",
+          "Party": "Republican",
+          "State": "Kansas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Evans, Dwight [D-PA]",
+          "Party": "Democratic",
+          "State": "Pennsylvania",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Evans, Gabe [R-CO]",
+          "Party": "Republican",
+          "State": "Colorado",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Ezell, Mike [R-MS]",
+          "Party": "Republican",
+          "State": "Mississippi",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Fallon, Pat [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Fedorchak, Julie [R-ND]",
+          "Party": "Republican",
+          "State": "North Dakota",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Feenstra, Randy [R-IA]",
+          "Party": "Republican",
+          "State": "Iowa",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Fields, Cleo [D-LA]",
+          "Party": "Democratic",
+          "State": "Louisiana",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Figures, Shomari [D-AL]",
+          "Party": "Democratic",
+          "State": "Alabama",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Fine, Randy [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Finstad, Brad [R-MN]",
+          "Party": "Republican",
+          "State": "Minnesota",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Fischbach, Michelle [R-MN]",
+          "Party": "Republican",
+          "State": "Minnesota",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Fitzgerald, Scott [R-WI]",
+          "Party": "Republican",
+          "State": "Wisconsin",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Fitzpatrick, Brian K. [R-PA]",
+          "Party": "Republican",
+          "State": "Pennsylvania",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Fleischmann, Charles J. \"Chuck\" [R-TN]",
+          "Party": "Republican",
+          "State": "Tennessee",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Fletcher, Lizzie [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Flood, Mike [R-NE]",
+          "Party": "Republican",
+          "State": "Nebraska",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Fong, Vince [R-CA]",
+          "Party": "Republican",
+          "State": "California",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Foster, Bill [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Foushee, Valerie P. [D-NC]",
+          "Party": "Democratic",
+          "State": "North Carolina",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Foxx, Virginia [R-NC]",
+          "Party": "Republican",
+          "State": "North Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Frankel, Lois [D-FL]",
+          "Party": "Democratic",
+          "State": "Florida",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Franklin, Scott [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Friedman, Laura [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Frost, Maxwell [D-FL]",
+          "Party": "Democratic",
+          "State": "Florida",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Fry, Russell [R-SC]",
+          "Party": "Republican",
+          "State": "South Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Fulcher, Russ [R-ID]",
+          "Party": "Republican",
+          "State": "Idaho",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Garamendi, John [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Garbarino, Andrew R. [R-NY]",
+          "Party": "Republican",
+          "State": "New York",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "García, Jesús G. \"Chuy\" [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Garcia, Robert [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Garcia, Sylvia R. [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Gill, Brandon [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Gillen, Laura [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Gimenez, Carlos A. [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Golden, Jared F. [D-ME]",
+          "Party": "Democratic",
+          "State": "Maine",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Goldman, Craig A. [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Goldman, Daniel S. [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Gomez, Jimmy [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Gonzales, Tony [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Gonzalez, Vicente [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Gooden, Lance [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Goodlander, Maggie [D-NH]",
+          "Party": "Democratic",
+          "State": "New Hampshire",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Gosar, Paul A. [R-AZ]",
+          "Party": "Republican",
+          "State": "Arizona",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Gottheimer, Josh [D-NJ]",
+          "Party": "Democratic",
+          "State": "New Jersey",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Graves, Sam [R-MO]",
+          "Party": "Republican",
+          "State": "Missouri",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Gray, Adam [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Green, Al [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Greene, Marjorie Taylor [R-GA]",
+          "Party": "Republican",
+          "State": "Georgia",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Griffith, H. Morgan [R-VA]",
+          "Party": "Republican",
+          "State": "Virginia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Grijalva, Adelita S. [D-AZ]",
+          "Party": "Democratic",
+          "State": "Arizona",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Grothman, Glenn [R-WI]",
+          "Party": "Republican",
+          "State": "Wisconsin",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Guest, Michael [R-MS]",
+          "Party": "Republican",
+          "State": "Mississippi",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Guthrie, Brett [R-KY]",
+          "Party": "Republican",
+          "State": "Kentucky",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Hageman, Harriet M. [R-WY]",
+          "Party": "Republican",
+          "State": "Wyoming",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Hamadeh, Abraham J. [R-AZ]",
+          "Party": "Republican",
+          "State": "Arizona",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Harder, Josh [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Haridopolos, Mike [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Harrigan, Pat [R-NC]",
+          "Party": "Republican",
+          "State": "North Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Harris, Andy [R-MD]",
+          "Party": "Republican",
+          "State": "Maryland",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Harris, Mark [R-NC]",
+          "Party": "Republican",
+          "State": "North Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Harshbarger, Diana [R-TN]",
+          "Party": "Republican",
+          "State": "Tennessee",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Hayes, Jahana [D-CT]",
+          "Party": "Democratic",
+          "State": "Connecticut",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Hern, Kevin [R-OK]",
+          "Party": "Republican",
+          "State": "Oklahoma",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Higgins, Clay [R-LA]",
+          "Party": "Republican",
+          "State": "Louisiana",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Hill, J. French [R-AR]",
+          "Party": "Republican",
+          "State": "Arkansas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Himes, James A. [D-CT]",
+          "Party": "Democratic",
+          "State": "Connecticut",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Hinson, Ashley [R-IA]",
+          "Party": "Republican",
+          "State": "Iowa",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Horsford, Steven [D-NV]",
+          "Party": "Democratic",
+          "State": "Nevada",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Houchin, Erin [R-IN]",
+          "Party": "Republican",
+          "State": "Indiana",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Houlahan, Chrissy [D-PA]",
+          "Party": "Democratic",
+          "State": "Pennsylvania",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Hoyer, Steny H. [D-MD]",
+          "Party": "Democratic",
+          "State": "Maryland",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Hoyle, Val T. [D-OR]",
+          "Party": "Democratic",
+          "State": "Oregon",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Hudson, Richard [R-NC]",
+          "Party": "Republican",
+          "State": "North Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Huffman, Jared [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Huizenga, Bill [R-MI]",
+          "Party": "Republican",
+          "State": "Michigan",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Hunt, Wesley [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Hurd, Jeff [R-CO]",
+          "Party": "Republican",
+          "State": "Colorado",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Issa, Darrell [R-CA]",
+          "Party": "Republican",
+          "State": "California",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Ivey, Glenn [D-MD]",
+          "Party": "Democratic",
+          "State": "Maryland",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Jack, Brian [R-GA]",
+          "Party": "Republican",
+          "State": "Georgia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Jackson, Jonathan L. [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Jackson, Ronny [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Jacobs, Sara [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "James, John [R-MI]",
+          "Party": "Republican",
+          "State": "Michigan",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Jayapal, Pramila [D-WA]",
+          "Party": "Democratic",
+          "State": "Washington",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Jeffries, Hakeem S. [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Johnson, Dusty [R-SD]",
+          "Party": "Republican",
+          "State": "South Dakota",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Johnson, Henry C. \"Hank\" [D-GA]",
+          "Party": "Democratic",
+          "State": "Georgia",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Johnson, Julie [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Johnson, Mike [R-LA]",
+          "Party": "Republican",
+          "State": "Louisiana",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Jordan, Jim [R-OH]",
+          "Party": "Republican",
+          "State": "Ohio",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Joyce, David P. [R-OH]",
+          "Party": "Republican",
+          "State": "Ohio",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Joyce, John [R-PA]",
+          "Party": "Republican",
+          "State": "Pennsylvania",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Kamlager-Dove, Sydney [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Kaptur, Marcy [D-OH]",
+          "Party": "Democratic",
+          "State": "Ohio",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Kean, Thomas H. [R-NJ]",
+          "Party": "Republican",
+          "State": "New Jersey",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Keating, William R. [D-MA]",
+          "Party": "Democratic",
+          "State": "Massachusetts",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Kelly, Mike [R-PA]",
+          "Party": "Republican",
+          "State": "Pennsylvania",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Kelly, Robin L. [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Kelly, Trent [R-MS]",
+          "Party": "Republican",
+          "State": "Mississippi",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Kennedy, Mike [R-UT]",
+          "Party": "Republican",
+          "State": "Utah",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Kennedy, Timothy M. [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Khanna, Ro [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Kiggans, Jennifer A. [R-VA]",
+          "Party": "Republican",
+          "State": "Virginia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Kiley, Kevin [R-CA]",
+          "Party": "Republican",
+          "State": "California",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Kim, Young [R-CA]",
+          "Party": "Republican",
+          "State": "California",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Knott, Brad [R-NC]",
+          "Party": "Republican",
+          "State": "North Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Krishnamoorthi, Raja [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Kustoff, David [R-TN]",
+          "Party": "Republican",
+          "State": "Tennessee",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "LaHood, Darin [R-IL]",
+          "Party": "Republican",
+          "State": "Illinois",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "LaLota, Nick [R-NY]",
+          "Party": "Republican",
+          "State": "New York",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "LaMalfa, Doug [R-CA]",
+          "Party": "Republican",
+          "State": "California",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Landsman, Greg [D-OH]",
+          "Party": "Democratic",
+          "State": "Ohio",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Langworthy, Nicholas A. [R-NY]",
+          "Party": "Republican",
+          "State": "New York",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Larsen, Rick [D-WA]",
+          "Party": "Democratic",
+          "State": "Washington",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Larson, John B. [D-CT]",
+          "Party": "Democratic",
+          "State": "Connecticut",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Latimer, George [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Latta, Robert E. [R-OH]",
+          "Party": "Republican",
+          "State": "Ohio",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Lawler, Michael [R-NY]",
+          "Party": "Republican",
+          "State": "New York",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Lee, Laurel M. [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Lee, Summer L. [D-PA]",
+          "Party": "Democratic",
+          "State": "Pennsylvania",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Lee, Susie [D-NV]",
+          "Party": "Democratic",
+          "State": "Nevada",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Leger Fernandez, Teresa [D-NM]",
+          "Party": "Democratic",
+          "State": "New Mexico",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Letlow, Julia [R-LA]",
+          "Party": "Republican",
+          "State": "Louisiana",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Levin, Mike [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Liccardo, Sam T. [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Lieu, Ted [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Lofgren, Zoe [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Loudermilk, Barry [R-GA]",
+          "Party": "Republican",
+          "State": "Georgia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Lucas, Frank D. [R-OK]",
+          "Party": "Republican",
+          "State": "Oklahoma",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Luna, Anna Paulina [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Luttrell, Morgan [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Lynch, Stephen F. [D-MA]",
+          "Party": "Democratic",
+          "State": "Massachusetts",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Mace, Nancy [R-SC]",
+          "Party": "Republican",
+          "State": "South Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Mackenzie, Ryan [R-PA]",
+          "Party": "Republican",
+          "State": "Pennsylvania",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Magaziner, Seth [D-RI]",
+          "Party": "Democratic",
+          "State": "Rhode Island",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Malliotakis, Nicole [R-NY]",
+          "Party": "Republican",
+          "State": "New York",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Maloy, Celeste [R-UT]",
+          "Party": "Republican",
+          "State": "Utah",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Mann, Tracey [R-KS]",
+          "Party": "Republican",
+          "State": "Kansas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Mannion, John W. [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Massie, Thomas [R-KY]",
+          "Party": "Republican",
+          "State": "Kentucky",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Mast, Brian J. [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Matsui, Doris O. [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "McBath, Lucy [D-GA]",
+          "Party": "Democratic",
+          "State": "Georgia",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "McBride, Sarah [D-DE]",
+          "Party": "Democratic",
+          "State": "Delaware",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "McCaul, Michael T. [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "McClain Delaney, April [D-MD]",
+          "Party": "Democratic",
+          "State": "Maryland",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "McClain, Lisa C. [R-MI]",
+          "Party": "Republican",
+          "State": "Michigan",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "McClellan, Jennifer L. [D-VA]",
+          "Party": "Democratic",
+          "State": "Virginia",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "McClintock, Tom [R-CA]",
+          "Party": "Republican",
+          "State": "California",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "McCollum, Betty [D-MN]",
+          "Party": "Democratic",
+          "State": "Minnesota",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "McCormick, Richard [R-GA]",
+          "Party": "Republican",
+          "State": "Georgia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "McDonald Rivet, Kristen [D-MI]",
+          "Party": "Democratic",
+          "State": "Michigan",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "McDowell, Addison P. [R-NC]",
+          "Party": "Republican",
+          "State": "North Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "McGarvey, Morgan [D-KY]",
+          "Party": "Democratic",
+          "State": "Kentucky",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "McGovern, James P. [D-MA]",
+          "Party": "Democratic",
+          "State": "Massachusetts",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "McGuire, John J. [R-VA]",
+          "Party": "Republican",
+          "State": "Virginia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "McIver, LaMonica [D-NJ]",
+          "Party": "Democratic",
+          "State": "New Jersey",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Meeks, Gregory W. [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Menendez, Robert [D-NJ]",
+          "Party": "Democratic",
+          "State": "New Jersey",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Meng, Grace [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Messmer, Mark B. [R-IN]",
+          "Party": "Republican",
+          "State": "Indiana",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Meuser, Daniel [R-PA]",
+          "Party": "Republican",
+          "State": "Pennsylvania",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Mfume, Kweisi [D-MD]",
+          "Party": "Democratic",
+          "State": "Maryland",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Miller, Carol D. [R-WV]",
+          "Party": "Republican",
+          "State": "West Virginia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Miller, Mary E. [R-IL]",
+          "Party": "Republican",
+          "State": "Illinois",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Miller, Max L. [R-OH]",
+          "Party": "Republican",
+          "State": "Ohio",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Miller-Meeks, Mariannette [R-IA]",
+          "Party": "Republican",
+          "State": "Iowa",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Mills, Cory [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Min, Dave [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Moolenaar, John R. [R-MI]",
+          "Party": "Republican",
+          "State": "Michigan",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Moore, Barry [R-AL]",
+          "Party": "Republican",
+          "State": "Alabama",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Moore, Blake D. [R-UT]",
+          "Party": "Republican",
+          "State": "Utah",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Moore, Gwen [D-WI]",
+          "Party": "Democratic",
+          "State": "Wisconsin",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Moore, Riley M. [R-WV]",
+          "Party": "Republican",
+          "State": "West Virginia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Moore, Tim [R-NC]",
+          "Party": "Republican",
+          "State": "North Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Moran, Nathaniel [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Morelle, Joseph D. [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Morrison, Kelly [D-MN]",
+          "Party": "Democratic",
+          "State": "Minnesota",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Moskowitz, Jared [D-FL]",
+          "Party": "Democratic",
+          "State": "Florida",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Moulton, Seth [D-MA]",
+          "Party": "Democratic",
+          "State": "Massachusetts",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Mrvan, Frank J. [D-IN]",
+          "Party": "Democratic",
+          "State": "Indiana",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Mullin, Kevin [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Murphy, Gregory F. [R-NC]",
+          "Party": "Republican",
+          "State": "North Carolina",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Nadler, Jerrold [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Neal, Richard E. [D-MA]",
+          "Party": "Democratic",
+          "State": "Massachusetts",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Neguse, Joe [D-CO]",
+          "Party": "Democratic",
+          "State": "Colorado",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Nehls, Troy E. [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Newhouse, Dan [R-WA]",
+          "Party": "Republican",
+          "State": "Washington",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Norcross, Donald [D-NJ]",
+          "Party": "Democratic",
+          "State": "New Jersey",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Norman, Ralph [R-SC]",
+          "Party": "Republican",
+          "State": "South Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Nunn, Zachary [R-IA]",
+          "Party": "Republican",
+          "State": "Iowa",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Obernolte, Jay [R-CA]",
+          "Party": "Republican",
+          "State": "California",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Ocasio-Cortez, Alexandria [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Ogles, Andrew [R-TN]",
+          "Party": "Republican",
+          "State": "Tennessee",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Olszewski, Johnny [D-MD]",
+          "Party": "Democratic",
+          "State": "Maryland",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Omar, Ilhan [D-MN]",
+          "Party": "Democratic",
+          "State": "Minnesota",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Onder, Robert F. [R-MO]",
+          "Party": "Republican",
+          "State": "Missouri",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Owens, Burgess [R-UT]",
+          "Party": "Republican",
+          "State": "Utah",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Pallone, Frank [D-NJ]",
+          "Party": "Democratic",
+          "State": "New Jersey",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Palmer, Gary J. [R-AL]",
+          "Party": "Republican",
+          "State": "Alabama",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Panetta, Jimmy [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Pappas, Chris [D-NH]",
+          "Party": "Democratic",
+          "State": "New Hampshire",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Patronis, Jimmy [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Pelosi, Nancy [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Perez, Marie Gluesenkamp [D-WA]",
+          "Party": "Democratic",
+          "State": "Washington",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Perry, Scott [R-PA]",
+          "Party": "Republican",
+          "State": "Pennsylvania",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Peters, Scott H. [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Pettersen, Brittany [D-CO]",
+          "Party": "Democratic",
+          "State": "Colorado",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Pfluger, August [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Pingree, Chellie [D-ME]",
+          "Party": "Democratic",
+          "State": "Maine",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Pocan, Mark [D-WI]",
+          "Party": "Democratic",
+          "State": "Wisconsin",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Pou, Nellie [D-NJ]",
+          "Party": "Democratic",
+          "State": "New Jersey",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Pressley, Ayanna [D-MA]",
+          "Party": "Democratic",
+          "State": "Massachusetts",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Quigley, Mike [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Ramirez, Delia C. [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Randall, Emily [D-WA]",
+          "Party": "Democratic",
+          "State": "Washington",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Raskin, Jamie [D-MD]",
+          "Party": "Democratic",
+          "State": "Maryland",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Reschenthaler, Guy [R-PA]",
+          "Party": "Republican",
+          "State": "Pennsylvania",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Riley, Josh [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Rivas, Luz M. [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Rogers, Harold [R-KY]",
+          "Party": "Republican",
+          "State": "Kentucky",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Rogers, Mike D. [R-AL]",
+          "Party": "Republican",
+          "State": "Alabama",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Rose, John W. [R-TN]",
+          "Party": "Republican",
+          "State": "Tennessee",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Ross, Deborah K. [D-NC]",
+          "Party": "Democratic",
+          "State": "North Carolina",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Rouzer, David [R-NC]",
+          "Party": "Republican",
+          "State": "North Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Roy, Chip [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Ruiz, Raul [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Rulli, Michael A. [R-OH]",
+          "Party": "Republican",
+          "State": "Ohio",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Rutherford, John H. [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Ryan, Patrick [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Salazar, Maria Elvira [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Salinas, Andrea [D-OR]",
+          "Party": "Democratic",
+          "State": "Oregon",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Sánchez, Linda T. [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Scalise, Steve [R-LA]",
+          "Party": "Republican",
+          "State": "Louisiana",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Scanlon, Mary Gay [D-PA]",
+          "Party": "Democratic",
+          "State": "Pennsylvania",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Schakowsky, Janice D. [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Schmidt, Derek [R-KS]",
+          "Party": "Republican",
+          "State": "Kansas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Schneider, Bradley Scott [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Scholten, Hillary J. [D-MI]",
+          "Party": "Democratic",
+          "State": "Michigan",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Schrier, Kim [D-WA]",
+          "Party": "Democratic",
+          "State": "Washington",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Schweikert, David [R-AZ]",
+          "Party": "Republican",
+          "State": "Arizona",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Scott, Austin [R-GA]",
+          "Party": "Republican",
+          "State": "Georgia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Scott, David [D-GA]",
+          "Party": "Democratic",
+          "State": "Georgia",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Scott, Robert C. \"Bobby\" [D-VA]",
+          "Party": "Democratic",
+          "State": "Virginia",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Self, Keith [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Sessions, Pete [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Sewell, Terri A. [D-AL]",
+          "Party": "Democratic",
+          "State": "Alabama",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Sherman, Brad [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Shreve, Jefferson [R-IN]",
+          "Party": "Republican",
+          "State": "Indiana",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Simon, Lateefah [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Simpson, Michael K. [R-ID]",
+          "Party": "Republican",
+          "State": "Idaho",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Smith, Adam [D-WA]",
+          "Party": "Democratic",
+          "State": "Washington",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Smith, Adrian [R-NE]",
+          "Party": "Republican",
+          "State": "Nebraska",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Smith, Christopher H. [R-NJ]",
+          "Party": "Republican",
+          "State": "New Jersey",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Smith, Jason [R-MO]",
+          "Party": "Republican",
+          "State": "Missouri",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Smucker, Lloyd [R-PA]",
+          "Party": "Republican",
+          "State": "Pennsylvania",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Sorensen, Eric [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Soto, Darren [D-FL]",
+          "Party": "Democratic",
+          "State": "Florida",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Spartz, Victoria [R-IN]",
+          "Party": "Republican",
+          "State": "Indiana",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Stansbury, Melanie A. [D-NM]",
+          "Party": "Democratic",
+          "State": "New Mexico",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Stanton, Greg [D-AZ]",
+          "Party": "Democratic",
+          "State": "Arizona",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Stauber, Pete [R-MN]",
+          "Party": "Republican",
+          "State": "Minnesota",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Stefanik, Elise M. [R-NY]",
+          "Party": "Republican",
+          "State": "New York",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Steil, Bryan [R-WI]",
+          "Party": "Republican",
+          "State": "Wisconsin",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Steube, W. Gregory [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Stevens, Haley M. [D-MI]",
+          "Party": "Democratic",
+          "State": "Michigan",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Strickland, Marilyn [D-WA]",
+          "Party": "Democratic",
+          "State": "Washington",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Strong, Dale W. [R-AL]",
+          "Party": "Republican",
+          "State": "Alabama",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Stutzman, Marlin A. [R-IN]",
+          "Party": "Republican",
+          "State": "Indiana",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Subramanyam, Suhas [D-VA]",
+          "Party": "Democratic",
+          "State": "Virginia",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Suozzi, Thomas R. [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Swalwell, Eric [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Sykes, Emilia Strong [D-OH]",
+          "Party": "Democratic",
+          "State": "Ohio",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Takano, Mark [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Taylor, David J. [R-OH]",
+          "Party": "Republican",
+          "State": "Ohio",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Tenney, Claudia [R-NY]",
+          "Party": "Republican",
+          "State": "New York",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Thanedar, Shri [D-MI]",
+          "Party": "Democratic",
+          "State": "Michigan",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Thompson, Bennie G. [D-MS]",
+          "Party": "Democratic",
+          "State": "Mississippi",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Thompson, Glenn [R-PA]",
+          "Party": "Republican",
+          "State": "Pennsylvania",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Thompson, Mike [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Tiffany, Thomas P. [R-WI]",
+          "Party": "Republican",
+          "State": "Wisconsin",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Timmons, William R. [R-SC]",
+          "Party": "Republican",
+          "State": "South Carolina",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Titus, Dina [D-NV]",
+          "Party": "Democratic",
+          "State": "Nevada",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Tlaib, Rashida [D-MI]",
+          "Party": "Democratic",
+          "State": "Michigan",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Tokuda, Jill N. [D-HI]",
+          "Party": "Democratic",
+          "State": "Hawaii",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Tonko, Paul [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Torres, Norma J. [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Torres, Ritchie [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Trahan, Lori [D-MA]",
+          "Party": "Democratic",
+          "State": "Massachusetts",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Tran, Derek [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Turner, Michael R. [R-OH]",
+          "Party": "Republican",
+          "State": "Ohio",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Underwood, Lauren [D-IL]",
+          "Party": "Democratic",
+          "State": "Illinois",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Valadao, David G. [R-CA]",
+          "Party": "Republican",
+          "State": "California",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Van Drew, Jefferson [R-NJ]",
+          "Party": "Republican",
+          "State": "New Jersey",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Van Duyne, Beth [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Van Epps, Matt [R-TN]",
+          "Party": "Republican",
+          "State": "Tennessee",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Van Orden, Derrick [R-WI]",
+          "Party": "Republican",
+          "State": "Wisconsin",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Vargas, Juan [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Vasquez, Gabe [D-NM]",
+          "Party": "Democratic",
+          "State": "New Mexico",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Veasey, Marc A. [D-TX]",
+          "Party": "Democratic",
+          "State": "Texas",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Velázquez, Nydia M. [D-NY]",
+          "Party": "Democratic",
+          "State": "New York",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Vindman, Eugene Simon [D-VA]",
+          "Party": "Democratic",
+          "State": "Virginia",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Wagner, Ann [R-MO]",
+          "Party": "Republican",
+          "State": "Missouri",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Walberg, Tim [R-MI]",
+          "Party": "Republican",
+          "State": "Michigan",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Walkinshaw, James R. [D-VA]",
+          "Party": "Democratic",
+          "State": "Virginia",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Wasserman Schultz, Debbie [D-FL]",
+          "Party": "Democratic",
+          "State": "Florida",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Waters, Maxine [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Watson Coleman, Bonnie [D-NJ]",
+          "Party": "Democratic",
+          "State": "New Jersey",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Weber, Randy K. Sr. [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Webster, Daniel [R-FL]",
+          "Party": "Republican",
+          "State": "Florida",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Westerman, Bruce [R-AR]",
+          "Party": "Republican",
+          "State": "Arkansas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Whitesides, George [D-CA]",
+          "Party": "Democratic",
+          "State": "California",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Wied, Tony [R-WI]",
+          "Party": "Republican",
+          "State": "Wisconsin",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Williams, Nikema [D-GA]",
+          "Party": "Democratic",
+          "State": "Georgia",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Williams, Roger [R-TX]",
+          "Party": "Republican",
+          "State": "Texas",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Wilson, Frederica S. [D-FL]",
+          "Party": "Democratic",
+          "State": "Florida",
+          "Vote": "Nay"
+        },
+        {
+          "Representative": "Wilson, Joe [R-SC]",
+          "Party": "Republican",
+          "State": "South Carolina",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Wittman, Robert J. [R-VA]",
+          "Party": "Republican",
+          "State": "Virginia",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Womack, Steve [R-AR]",
+          "Party": "Republican",
+          "State": "Arkansas",
+          "Vote": "Not Voting"
+        },
+        {
+          "Representative": "Yakym, Rudy [R-IN]",
+          "Party": "Republican",
+          "State": "Indiana",
+          "Vote": "Yea"
+        },
+        {
+          "Representative": "Zinke, Ryan K. [R-MT]",
+          "Party": "Republican",
+          "State": "Montana",
+          "Vote": "Yea"
+        }
+      ]
+    }
+  ]
+}

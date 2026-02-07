@@ -89,39 +89,30 @@ class AnalysisAgent:
                 break
         return " ".join(chosen)
 
-    def _derive_pros_cons(self, text: str) -> (List[str], List[str]):
-        t = (text or "").lower()
-        pros: List[str] = []
-        cons: List[str] = []
-
-        # Heuristic pro statements (what supporters might argue)
-        if any(k in t for k in ("prohibit", "ban", "prevent", "restrict")):
-            pros.append("May be intended to protect minors by restricting federal coverage of certain procedures.")
-        if "parent" in t or "guardian" in t:
-            pros.append("Includes exceptions referencing parental or guardian involvement, which supporters may see as protective.")
-        if "cost" in t or "medicaid" in t:
-            pros.append("Could reduce federal Medicaid expenditures for the specified services.")
-
-        # Heuristic con statements (potential harms / impacts)
-        if any(k in t for k in ("gender", "transition", "transgender", "gender-affirming")):
-            cons.append("Targets gender-related healthcare and may stigmatize or reduce access for transgender youth.")
-        if any(k in t for k in ("limit", "restrict", "deny", "prevent", "ban")):
-            cons.append("May restrict access to medically recommended care and impose financial or health burdens on families.")
-        if any(k in t for k in ("mental health", "harm", "suicide", "depress")):
-            cons.append("Could increase mental health risks for affected individuals if care is delayed or denied.")
-        if not cons and not pros:
-            # fallback neutral observations
-            if len(t) > 200:
-                pros.append("Contains policy changes that affect coverage and clinical practice.")
-                cons.append("Could have unintended impacts on people who rely on covered services.")
-        return pros, cons
-
-    def analyze(self, bill_json_path: str, out_path: Optional[str] = None) -> Dict:
+    def analyze(self, bill_json_path: str = None, out_path: str = None, bill_folder: str = None, bill_url: str = None, vote_url: str = None) -> Dict:
         """Analyze a bill JSON file and return analysis dict; also write to VoteData/.
+        
+        Can be called in two ways:
+        1. Direct: analyze(bill_json_path='path/to/bill.json')
+        2. Folder-based: analyze(bill_folder='VoteData/Dec2025/HR498')
 
         Output structure:
-          { bill_title, date_of_vote, brief_summary, pros, cons, path }
+          { bill_title, date_of_vote, brief_summary, analysis_file }
         """
+        # If bill_folder is provided, find the bill JSON file in that folder
+        if bill_folder:
+            folder_path = pathlib.Path(bill_folder)
+            bill_files = list(folder_path.glob('bill_*.json'))
+            if not bill_files:
+                return {"success": False, "error": f"No bill JSON file found in {bill_folder}", "analysis_file": None}
+            bill_json_path = str(bill_files[0])
+            # Set output path to be in the same folder
+            if not out_path:
+                out_path = str(folder_path / f"analysis_{bill_files[0].stem}.json")
+        
+        if not bill_json_path:
+            return {"success": False, "error": "Either bill_json_path or bill_folder must be provided", "analysis_file": None}
+        
         data = self._read_json(bill_json_path)
 
         # Title
@@ -154,14 +145,10 @@ class AnalysisAgent:
         if not brief:
             brief = self._short_sentences(title, max_sentences=1)
 
-        pros, cons = self._derive_pros_cons(brief_source + "\n" + title)
-
         analysis = {
             "bill_title": title,
             "date_of_vote": date_of_vote,
             "brief_summary": brief,
-            "pros": pros,
-            "cons": cons,
         }
 
         # prepare out path
@@ -181,9 +168,9 @@ class AnalysisAgent:
             with open(out_path, "w", encoding="utf-8") as f:
                 json.dump(analysis, f, ensure_ascii=False, indent=2)
         except Exception as e:
-            return {"success": False, "error": f"Failed to write analysis file: {e}", "path": out_path}
+            return {"success": False, "error": f"Failed to write analysis file: {e}", "analysis_file": out_path}
 
-        result = {"success": True, "path": out_path, "analysis": analysis}
+        result = {"success": True, "analysis_file": out_path, "analysis": analysis}
         return result
 
 
