@@ -1,10 +1,14 @@
-"""Langfuse integration helper for LLM observability and tracing."""
+"""Langfuse integration helper for LLM observability and tracing.
+
+This module avoids importing the optional `langfuse` package at module
+import time to prevent test-time import errors when Langfuse or its
+dependencies are unavailable or incompatible. Langfuse is imported
+lazily inside `LangfuseHelper.instance()` when enabled.
+"""
 
 import logging
 import os
 from typing import Any, Optional
-
-from langfuse import Langfuse
 
 from playbooks.config import config
 
@@ -237,7 +241,8 @@ class LangfuseHelper:
     tracing of LLM operations throughout the application.
     """
 
-    langfuse: Langfuse | PlaybooksLangfuseInstance | None = None
+    # Use a generic Any type to avoid importing langfuse at module import time.
+    langfuse: Any | PlaybooksLangfuseInstance | None = None
     _session_id: Optional[str] = None  # Session ID for agent traces
 
     @classmethod

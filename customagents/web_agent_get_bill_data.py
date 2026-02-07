@@ -47,6 +47,9 @@ class WebAgent:
         self.last_url: Optional[str] = None
         self.last_html: Optional[str] = None
         self.last_links: List[Tuple[str, str]] = []  # (text, url)
+        self._browser = None
+        self._page = None
+        self._playwright = None
 
     def search(self, query: str, max_results: int = 5):
         if tavily_search is not None:
@@ -152,9 +155,120 @@ class WebAgent:
             "text": text,
         }
 
+    def _extract_bill_abbrev(self, bill_url: str) -> Optional[str]:
+        """Extract bill abbreviation from congress.gov URL.
+        
+        Examples:
+            'https://www.congress.gov/bill/119th-congress/house-bill/498' -> 'HR498'
+            'https://www.congress.gov/bill/119th-congress/senate-bill/123' -> 'S123'
+        """
+        # Match patterns like 'house-bill/498' or 'senate-bill/123'
+        match = re.search(r'/(house-bill|senate-bill|house-joint-resolution|senate-joint-resolution|house-concurrent-resolution|senate-concurrent-resolution|house-resolution|senate-resolution)/(\d+)', bill_url, re.IGNORECASE)
+        if match:
+            bill_type = match.group(1).lower()
+            bill_num = match.group(2)
+            
+            # Map bill types to abbreviations
+            type_map = {
+                'house-bill': 'HR',
+                'senate-bill': 'S',
+                'house-joint-resolution': 'HJRes',
+                'senate-joint-resolution': 'SJRes',
+                'house-concurrent-resolution': 'HConRes',
+                'senate-concurrent-resolution': 'SConRes',
+                'house-resolution': 'HRes',
+                'senate-resolution': 'SRes',
+            }
+            abbrev = type_map.get(bill_type, 'BILL')
+            return f"{abbrev}{bill_num}"
+        return None
+
+    def _parse_month_folder(self, date_str: str) -> Optional[str]:
+        """Parse date string and return folder name in format MonthYear (e.g., 'Jan2025', 'Dec2025').
+        
+        Args:
+            date_str: Date in format MM/DD/YYYY (e.g., '01/16/2025')
+            
+        Returns:
+            Folder name like 'Jan2025' or None if parsing fails
+        """
+        try:
+            from datetime import datetime
+            # Parse date from MM/DD/YYYY format
+            dt = datetime.strptime(date_str, '%m/%d/%Y')
+            # Format as MonthYear (e.g., 'Jan2025')
+            return dt.strftime('%b%Y')
+        except Exception:
+            return None
+
+    def _get_browser(self):
+        """Get or create a persistent Playwright browser session."""
+        if self._playwright is None:
+            from playwright.sync_api import sync_playwright
+            self._playwright = sync_playwright().start()
+            self._browser = self._playwright.chromium.launch(headless=True)
+            self._page = self._browser.new_page()
+            self._page.set_extra_http_headers({
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            })
+        return self._page
+    
+    def close_browser(self):
+        """Close the Playwright browser if it's open."""
+        if self._browser:
+            self._browser.close()
+            self._browser = None
+            self._page = None
+        if self._playwright:
+            self._playwright.stop()
+            self._playwright = None
+
     def _fetch_raw(self, url: str):
         """Fetch a URL and return a dict with keys: success, url, html, text, error"""
-        # Reuse the visit fetching logic but avoid parsing/setting last_*
+        # Use persistent Playwright browser to bypass Cloudflare protection
+        try:
+            import time
+            page = self._get_browser()
+            
+            try:
+                # Add delay to avoid rate limiting
+                time.sleep(3)
+                
+                page.goto(url, wait_until="load", timeout=45000)
+                page.wait_for_timeout(4000)  # Wait for JavaScript/Cloudflare to complete
+                
+                html = page.content()
+                final_url = page.url
+                
+                # Check if we got a Cloudflare challenge page
+                if "Just a moment" in html or "Verifying you are human" in html:
+                    print(f"Warning: Cloudflare challenge detected for {url}, waiting longer...")
+                    page.wait_for_timeout(8000)  # Wait longer for Cloudflare
+                    html = page.content()
+                    
+                    # If still blocked, give up on this page
+                    if "Just a moment" in html:
+                        return {"success": False, "error": "Cloudflare blocked request", "url": url}
+                
+                # Extract text
+                try:
+                    text = page.evaluate("() => document.body.innerText")
+                except:
+                    text = html
+                
+                return {
+                    "success": True,
+                    "url": final_url,
+                    "html": html,
+                    "text": text,
+                }
+            except Exception as e:
+                return {"success": False, "error": f"Playwright navigation failed: {e}", "url": url}
+        except Exception as e:
+            # Fallback to requests if Playwright fails
+            pass
+        
+        # Fallback: use requests with retry logic
         session = requests.Session()
         try:
             from urllib3.util import Retry
@@ -272,11 +386,12 @@ class WebAgent:
 
         return {"success": True, "url": resp.url, "html": html, "text": text}
 
-    def fetch_bill_tabs(self, bill_url: str, tabs: Optional[List[str]] = None, out_file: Optional[str] = None):
+    def fetch_bill_tabs(self, bill_url: str, tabs: Optional[List[str]] = None, out_file: Optional[str] = None, vote_date: Optional[str] = None):
         """Fetch specified tabs for a bill page and store consolidated JSON to `out_file`.
 
         tabs: list of tab names to collect (case-insensitive). Defaults to ['summary','text','amendments','committees']
-        out_file: optional path to write JSON; if not provided, derives from bill URL.
+        out_file: optional path to write JSON; if not provided, derives from bill URL and vote_date.
+        vote_date: optional date string in format MM/DD/YYYY to determine output folder (e.g., '01/16/2025' -> 'Jan2025')
         Returns dict with file path and collected data or error.
         """
         if tabs is None:
@@ -329,18 +444,37 @@ class WebAgent:
                 # store html and a short text preview
                 collected["tabs"][tab] = {"success": True, "url": res.get("url"), "text": res.get("text"), "html": res.get("html")}
 
-        # derive out_file if not provided — save into VoteData/ at the repo root
+        # derive out_file if not provided — save into VoteData/{MonthYear}/{BillAbbrev}/ at the repo root
         if not out_file:
-            # sanitize bill_url to filename
-            safe = re.sub(r"[^A-Za-z0-9_-]", "_", bill_url)
             repo_root = pathlib.Path(__file__).parents[1]
-            vote_dir = repo_root / "VoteData"
+            vote_data_root = repo_root / "VoteData"
+            
+            # Extract bill abbreviation from URL (e.g., 'house-bill-498' -> 'HR498')
+            bill_abbrev = self._extract_bill_abbrev(bill_url)
+            
+            # Determine month folder from vote_date if provided (e.g., '01/16/2025' -> 'Jan2025')
+            month_folder = None
+            if vote_date:
+                month_folder = self._parse_month_folder(vote_date)
+            
+            # Build folder path: VoteData/{MonthYear}/{BillAbbrev}/
+            if month_folder and bill_abbrev:
+                vote_dir = vote_data_root / month_folder / bill_abbrev
+            elif month_folder:
+                vote_dir = vote_data_root / month_folder
+            elif bill_abbrev:
+                vote_dir = vote_data_root / bill_abbrev
+            else:
+                vote_dir = vote_data_root
+            
             try:
                 vote_dir.mkdir(parents=True, exist_ok=True)
             except Exception:
                 # fallback to current working directory if creation fails
                 vote_dir = pathlib.Path(os.getcwd())
-
+            
+            # sanitize bill_url to filename
+            safe = re.sub(r"[^A-Za-z0-9_-]", "_", bill_url)
             out_file = str(vote_dir / f"bill_{safe}.json")
 
         try:
