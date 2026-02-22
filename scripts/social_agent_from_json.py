@@ -136,8 +136,18 @@ def simplify_to_eli5(description: str, bill_title: str = "") -> str:
     if re.search(r'(wildlife|endangered|fish|wolf|animal|endangered.*species)', text_lower):
         return "This bill changes how endangered species and wildlife are protected.\nEnvironmental groups worry it weakens protections; industry and rural communities argue it restricts land use and economic activities.\nThe balance between conservation and economic development is contentious."
     
-    # ===== REGULATORY & FEDERAL AGENCY PROCESS =====
-    if re.search(r'(ferc|regulatory|commission|federal.*agency|environmental.*review|nepa)', text_lower):
+    # ===== NEPA SCOPE & ENVIRONMENTAL REVIEW LIMITATIONS =====
+    if re.search(r'(nepa|national\s+environmental\s+policy).*?(limit|scope|narrow|redefine|reduce)', combined_lower) or \
+       re.search(r'limit.*?(nepa|environmental\s+review|federal\s+action)', combined_lower):
+        return "This bill limits the scope of environmental reviews required under federal law.\nSupporters say it speeds up projects and reduces regulatory burden.\nEnvironmental groups warn it could allow harmful projects to proceed without adequate review.\nCommunities near major projects may have less opportunity to raise concerns."
+    
+    # ===== PIPELINE & FERC COORDINATION =====
+    if re.search(r'(pipeline|ferc|natural\s+gas).*?(review|coordinat|deadline|interagency)', combined_lower) or \
+       re.search(r'interagency.*?(pipeline|coordinat|review)', combined_lower):
+        return "This bill streamlines the review process for pipeline projects.\nIt sets deadlines for federal agencies to coordinate their reviews.\nEnergy companies say it reduces delays; environmental groups worry it limits thorough assessment.\nCommunities along pipeline routes may have less time to participate in the review process."
+    
+    # ===== REGULATORY & FEDERAL AGENCY PROCESS (General) =====
+    if re.search(r'(ferc|regulatory|commission|federal.*agency|environmental.*review)', text_lower):
         if re.search(r'(deadline|process|review|authorize|expedite|shorten)', text_lower):
             return "This bill speeds up federal agency reviews and project approvals.\nEnvironmental and community groups worry faster timelines mean less scrutiny of potential harms.\nIndustry supports faster approvals but critics say it reduces public input and environmental safeguards."
     
