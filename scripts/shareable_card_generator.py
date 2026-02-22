@@ -173,22 +173,43 @@ def create_shareable_card(
     yea_count = counts.get('yea', 0)
     nay_count = counts.get('nay', 0)
     
-    # Calculate party breakdown from members data
-    members = vote_data.get('members', [])
+    # Calculate party breakdown from tables data
+    # Table 1 has the party summary: DEMOCRATIC/REPUBLICAN rows with YEAS/NAYS columns
+    # Table 2 has individual member votes
     rep_yea, rep_nay, dem_yea, dem_nay = 0, 0, 0, 0
-    for member in members:
-        party = member.get('Party', '')
-        vote = member.get('Vote', '')
-        if 'Republican' in party:
-            if vote == 'Yea':
-                rep_yea += 1
-            elif vote == 'Nay':
-                rep_nay += 1
-        elif 'Democrat' in party:
-            if vote == 'Yea':
-                dem_yea += 1
-            elif vote == 'Nay':
-                dem_nay += 1
+    
+    tables = vote_data.get('tables', [])
+    
+    # Try to get from summary table first (Table 1)
+    if len(tables) > 1:
+        party_table = tables[1]
+        for row in party_table.get('rows', []):
+            party_name = row.get('', '').upper()
+            yeas = int(row.get('YEAS/AYES', 0) or 0)
+            nays = int(row.get('NAYS/NOES', 0) or 0)
+            if 'DEMOCRAT' in party_name:
+                dem_yea = yeas
+                dem_nay = nays
+            elif 'REPUBLICAN' in party_name:
+                rep_yea = yeas
+                rep_nay = nays
+    
+    # Fallback: parse from individual member votes (Table 2)
+    if rep_yea == 0 and dem_yea == 0 and len(tables) > 2:
+        member_table = tables[2]
+        for row in member_table.get('rows', []):
+            party = row.get('Party', '')
+            vote = row.get('Vote', '')
+            if 'Republican' in party:
+                if vote == 'Yea':
+                    rep_yea += 1
+                elif vote == 'Nay':
+                    rep_nay += 1
+            elif 'Democrat' in party:
+                if vote == 'Yea':
+                    dem_yea += 1
+                elif vote == 'Nay':
+                    dem_nay += 1
     
     # Get vote date from analysis
     vote_date = analysis.get('date_of_vote', '')
