@@ -128,22 +128,33 @@ def make_text_image(title: str, desc: str, out_path: Path, width: int = 1200) ->
         title_font = ImageFont.load_default()
         desc_font = ImageFont.load_default()
 
-    # Wrap text
-    wrapper = textwrap.TextWrapper(width=80)
-    desc_wrapped = wrapper.fill(desc)
-
-    # Estimate height
+    # Create dummy image for measuring text
     dummy = Image.new("RGB", (width, 200), "white")
     draw = ImageDraw.Draw(dummy)
-    title_h = draw.multiline_textsize(title, font=title_font)[1]
-    desc_h = draw.multiline_textsize(desc_wrapped, font=desc_font)[1]
+
+    # Wrap title based on pixel width to ensure full title fits
+    avg_title_char_width = draw.textbbox((0, 0), 'A', font=title_font)[2]
+    target_width = width - 2 * margin
+    title_chars_per_line = max(10, target_width // avg_title_char_width)
+    title_wrapper = textwrap.TextWrapper(width=title_chars_per_line)
+    title_wrapped = title_wrapper.fill(title)
+
+    # Wrap description
+    desc_wrapper = textwrap.TextWrapper(width=80)
+    desc_wrapped = desc_wrapper.fill(desc)
+
+    # Estimate height using textbbox (multiline_textsize is deprecated)
+    title_bbox = draw.textbbox((0, 0), title_wrapped, font=title_font)
+    title_h = title_bbox[3] - title_bbox[1]
+    desc_bbox = draw.textbbox((0, 0), desc_wrapped, font=desc_font)
+    desc_h = desc_bbox[3] - desc_bbox[1]
     height = margin * 2 + title_h + 20 + desc_h
 
     img = Image.new("RGB", (width, max(height, 300)), "white")
     d = ImageDraw.Draw(img)
     x = margin
     y = margin
-    d.text((x, y), title, fill="black", font=title_font)
+    d.text((x, y), title_wrapped, fill="black", font=title_font)
     y += title_h + 20
     d.text((x, y), desc_wrapped, fill="black", font=desc_font)
     img.save(out_path)

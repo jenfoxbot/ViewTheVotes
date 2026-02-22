@@ -64,18 +64,44 @@ def load_json(path: Path):
     return json.loads(path.read_text())
 
 
-def simplify_to_eli5(description: str) -> str:
+def simplify_to_eli5(description: str, bill_title: str = "") -> str:
     """
     Convert a bill description to a clear overview highlighting impacts and consequences.
     
     Focus on: What the bill does, who it affects, and what the real-world consequences
     might be—both intended and potential unintended. Explain nuances and trade-offs.
     Stick to facts; highlight potential harms and benefits for different groups.
-    """
-    if not description or len(description.strip()) < 10:
-        return "This bill makes changes to federal policy."
     
-    text_lower = description.lower()
+    Args:
+        description: The bill's brief summary text
+        bill_title: The bill's title (used as fallback when description is inadequate)
+    """
+    # Check if description is inadequate (empty, too short, or just metadata)
+    is_inadequate = (
+        not description or 
+        len(description.strip()) < 10 or
+        # Detect metadata-only descriptions (no actual bill content)
+        (re.search(r'^[A-Z][a-z]+,\s+[A-Z][a-z]+\s+\[', description) and 
+         'this bill' not in description.lower() and
+         not re.search(r'(requires|prohibits|establishes|authorizes|amends)', description.lower()))
+    )
+    
+    # Combine description and title for better matching
+    text_lower = description.lower() if description else ""
+    title_lower = bill_title.lower() if bill_title else ""
+    combined_lower = f"{text_lower} {title_lower}"
+    
+    # ===== HEALTHCARE & INSURANCE PREMIUMS =====
+    if re.search(r'(health\s*care|healthcare|insurance).*(premium|cost|affordable|lower)', combined_lower) or \
+       re.search(r'(premium|cost).*(health|insurance|affordable)', combined_lower) or \
+       re.search(r'lower.*health.*care.*premium', combined_lower):
+        return "This bill aims to reduce health care costs and insurance premiums.\nSupporters say it makes healthcare more affordable for families.\nCritics debate whether the approach effectively lowers costs or shifts them elsewhere.\nThe impact on coverage options and out-of-pocket expenses varies by income and insurance type."
+
+    # ===== EDUCATION & FOREIGN INFLUENCE TRANSPARENCY =====
+    if re.search(r'(school|education|lea|educational\s+agenc).*?(foreign\s+influence|china|adversar)', combined_lower) or \
+       re.search(r'(transparency|reporting).*?(adversar|foreign).*?(education|school|contribut)', combined_lower) or \
+       re.search(r'(parent|notif).*?(foreign|china|adversar)', combined_lower):
+        return "This bill requires schools to notify parents about foreign influence in education.\nParents gain the right to request information about foreign government involvement.\nSupporters say it protects against adversarial influence in schools.\nCritics worry it may burden schools and chill legitimate international educational exchanges."
     
     # ===== EDUCATION & SCHOOL FUNDING RESTRICTIONS =====
     if re.search(r'school.*?(china|foreign|communist).*?(prohibit|ban|prevent|restrict|disclose)', text_lower):
@@ -176,9 +202,8 @@ def simplify_to_eli5(description: str) -> str:
 
 
 def make_title_image(title: str, desc: str, out_path: Path, width=1080, subheader: str | None = None):
-    simple_desc = simplify_to_eli5(desc)
+    simple_desc = simplify_to_eli5(desc, bill_title=title)
     margin = 40
-    height = width
     base_desc = max(18, int(width * 0.018 * FONT_SCALE * 3))
     title_font_size = base_desc  # Reverted: no longer * 2
     desc_font_size = max(8, int(base_desc / 2)) * 2  # Keep 2x for description
@@ -186,7 +211,7 @@ def make_title_image(title: str, desc: str, out_path: Path, width=1080, subheade
     title_font = _get_font(['DejaVuSans-Bold.ttf', 'arialbd.ttf', 'arial.ttf', 'DejaVuSans.ttf'], title_font_size)
     desc_font = _get_font(['DejaVuSans.ttf', 'arial.ttf'], desc_font_size)
 
-    tmp_img = Image.new('RGB', (width, height), 'white')
+    tmp_img = Image.new('RGB', (width, 2000), 'white')  # Use larger temp image for measuring
     tmp_draw = ImageDraw.Draw(tmp_img)
 
     # Extract bill number and short title from full title
@@ -205,29 +230,29 @@ def make_title_image(title: str, desc: str, out_path: Path, width=1080, subheade
         short_title = match.group(2).strip()
         title = f"{bill_num} {short_title}"
     
-    # Wrap title based on pixel width, not character count
-    avg_title_char_width = tmp_draw.textbbox((0, 0), 'A', font=title_font)[2]
+    # Wrap title based on pixel width - use representative sample for better average
+    # Using lowercase letters which are more common in titles for better width estimate
+    sample_text = "abcdefghijklmnopqrstuvwxyz"
+    sample_bbox = tmp_draw.textbbox((0, 0), sample_text, font=title_font)
+    avg_title_char_width = (sample_bbox[2] - sample_bbox[0]) / len(sample_text)
     target_width = width - 2 * margin
-    title_chars_per_line = max(10, target_width // avg_title_char_width)
+    title_chars_per_line = max(10, int(target_width / avg_title_char_width))
     title_lines = textwrap.wrap(title, width=title_chars_per_line)
-    title = '\n'.join(title_lines[:3])
-    if len(title_lines) > 3:
-        title_text = '\n'.join(title_lines[:3])
-        title_text = title_text[:title_text.rfind('\n')] + '...'
-        title = title_text
+    title = '\n'.join(title_lines)  # Include ALL title lines - no truncation
 
     # Calculate title height
     title_bbox = tmp_draw.textbbox((margin, margin), title, font=title_font)
     title_h = title_bbox[3] - title_bbox[1]
     
-    # Position description with more spacing and center vertically in remaining space
+    # Position description with more spacing
     desc_start_y = margin + title_h + 60
-    available_height = height - desc_start_y - margin
     
-    # Wrap description to fill available space
-    avg_char_width = tmp_draw.textbbox((0, 0), 'a', font=desc_font)[2]
+    # Wrap description to fill available space - use representative sample for better average
+    desc_sample = "abcdefghijklmnopqrstuvwxyz"
+    desc_sample_bbox = tmp_draw.textbbox((0, 0), desc_sample, font=desc_font)
+    avg_char_width = (desc_sample_bbox[2] - desc_sample_bbox[0]) / len(desc_sample)
     target_width = width - 2 * margin
-    desc_chars_per_line = max(10, target_width // avg_char_width)
+    desc_chars_per_line = max(10, int(target_width / avg_char_width))
     
     # Split on newlines first (for our sentence-per-line formatting), then wrap long lines
     desc_paragraphs = simple_desc.split('\n')
@@ -243,6 +268,15 @@ def make_title_image(title: str, desc: str, out_path: Path, width=1080, subheade
     if wrapped_lines and wrapped_lines[-1] == '':
         wrapped_lines.pop()
     simple_desc = '\n'.join(wrapped_lines)
+
+    # Calculate description height
+    desc_bbox = tmp_draw.textbbox((margin, desc_start_y), simple_desc, font=desc_font)
+    desc_h = desc_bbox[3] - desc_bbox[1]
+    
+    # Calculate total required height dynamically based on content
+    total_height = margin + title_h + 60 + desc_h + margin
+    # Ensure minimum height of width (square) but expand if content requires more
+    height = max(width, total_height)
 
     img = Image.new('RGB', (width, height), 'white')
     draw = ImageDraw.Draw(img)
