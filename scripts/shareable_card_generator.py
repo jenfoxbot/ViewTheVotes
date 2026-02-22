@@ -55,10 +55,12 @@ def _get_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
     return ImageFont.load_default()
 
 
-def get_vote_action_text(analysis: Dict, vote_passed: bool) -> str:
-    """Generate a simple action description from the bill analysis.
+def get_vote_action_text(analysis: Dict, vote_passed: bool) -> Tuple[str, str]:
+    """Generate action description and impact text from the bill analysis.
     
-    Returns something like "voted to limit environmental reviews"
+    Returns: (action_text, impact_text)
+        action_text: something like "limit environmental reviews"
+        impact_text: one-line explanation of what this means for people
     """
     title = analysis.get('bill_title', '')
     summary = analysis.get('brief_summary', '')
@@ -72,35 +74,47 @@ def get_vote_action_text(analysis: Dict, vote_passed: bool) -> str:
     text_lower = (summary + ' ' + short_title).lower()
     
     if re.search(r'(nepa|environmental\s+review).*?(limit|scope|narrow)', text_lower):
-        return "limit environmental reviews"
+        return ("limit environmental reviews", 
+                "Could speed up construction but reduce environmental safeguards")
     if re.search(r'(pipeline|ferc).*?(review|coordinat)', text_lower):
-        return "speed up pipeline approvals"
+        return ("speed up pipeline approvals",
+                "Faster energy projects, but less time for community input")
     if re.search(r'(health\s*care|premium).*?(lower|reduce|cost)', text_lower):
-        return "change health care costs"
+        return ("change health care costs",
+                "Aims to affect what you pay for health insurance")
     if re.search(r'(school|education).*?(foreign|china|adversar)', text_lower):
-        return "require schools to report foreign influence"
+        return ("require schools to report foreign influence",
+                "Parents can request info about foreign government involvement")
     if re.search(r'(mining|mineral).*?(regulat|permit)', text_lower):
-        return "change mining regulations"
+        return ("change mining regulations",
+                "Affects how mining companies operate on federal lands")
     if re.search(r'(child|minor).*?(protect|safe)', text_lower):
-        return "strengthen child protections"
+        return ("strengthen child protections",
+                "New safeguards for children's health and safety")
     if re.search(r'(medicaid|medicare).*?(prohibit|restrict)', text_lower):
-        return "restrict Medicaid coverage"
+        return ("restrict Medicaid coverage",
+                "Could limit healthcare access for low-income families")
     if re.search(r'(wildlife|endangered|species)', text_lower):
-        return "change wildlife protections"
+        return ("change wildlife protections",
+                "Affects how endangered species are protected")
     if re.search(r'(tax|income).*?(cut|reduce|lower)', text_lower):
-        return "cut taxes"
+        return ("cut taxes",
+                "Changes how much you or businesses pay in taxes")
     if re.search(r'(military|defense|armed)', text_lower):
-        return "authorize military spending"
+        return ("authorize military spending",
+                "Funds defense programs and military personnel")
     if re.search(r'(immigration|border|visa)', text_lower):
-        return "change immigration rules"
+        return ("change immigration rules",
+                "Affects who can enter or stay in the country")
     if re.search(r'(electric|utility|energy)', text_lower):
-        return "change energy regulations"
+        return ("change energy regulations",
+                "Could affect electricity prices and energy sources")
     
     # Fallback: use short title if available
     if short_title and len(short_title) < 40:
-        return f"pass the {short_title}"
+        return (f"pass the {short_title}", "Changes federal law and policy")
     
-    return "pass this bill"
+    return ("pass this bill", "Changes federal law and policy")
 
 
 def load_bill_data(bill_folder: Path) -> Tuple[Dict, Dict, bool]:
@@ -150,6 +164,8 @@ def create_shareable_card(
     Returns:
         Path to the created image
     """
+    import textwrap
+    
     # Load data
     analysis, vote_data, vote_passed = load_bill_data(bill_folder)
     
@@ -157,31 +173,59 @@ def create_shareable_card(
     yea_count = counts.get('yea', 0)
     nay_count = counts.get('nay', 0)
     
-    # Determine which count to feature (the winning side)
+    # Calculate party breakdown from members data
+    members = vote_data.get('members', [])
+    rep_yea, rep_nay, dem_yea, dem_nay = 0, 0, 0, 0
+    for member in members:
+        party = member.get('Party', '')
+        vote = member.get('Vote', '')
+        if 'Republican' in party:
+            if vote == 'Yea':
+                rep_yea += 1
+            elif vote == 'Nay':
+                rep_nay += 1
+        elif 'Democrat' in party:
+            if vote == 'Yea':
+                dem_yea += 1
+            elif vote == 'Nay':
+                dem_nay += 1
+    
+    # Get vote date from analysis
+    vote_date = analysis.get('date_of_vote', '')
+    
+    # Determine outcome and colors
     if vote_passed:
         featured_count = yea_count
         vote_verb = "voted to"
         colors = COLORS['passed']
+        result_text = f"PASSED {yea_count}-{nay_count}"
+        party_text = f"R: {rep_yea}  D: {dem_yea}"
     else:
         featured_count = nay_count
         vote_verb = "voted against"
         colors = COLORS['failed']
+        result_text = f"FAILED {nay_count}-{yea_count}"
+        party_text = f"R: {rep_nay}  D: {dem_nay}"
     
-    # Get action text
-    action_text = get_vote_action_text(analysis, vote_passed)
+    # Get action text and impact
+    action_text, impact_text = get_vote_action_text(analysis, vote_passed)
     
     # Create image
     img = Image.new('RGB', (width, height), colors['background'])
     draw = ImageDraw.Draw(img)
     
     # Fonts
-    count_font = _get_font(180, bold=True)
-    label_font = _get_font(48, bold=False)
-    action_font = _get_font(42, bold=True)
-    cta_font = _get_font(36, bold=False)
+    count_font = _get_font(140, bold=True)  # Slightly smaller to fit more
+    label_font = _get_font(40, bold=False)
+    action_font = _get_font(38, bold=True)
+    impact_font = _get_font(28, bold=False)
+    result_font = _get_font(32, bold=True)
+    party_font = _get_font(26, bold=False)
+    cta_font = _get_font(32, bold=False)
+    footer_font = _get_font(24, bold=False)
     
     # Layout calculations
-    margin = 60
+    margin = 50
     center_x = width // 2
     
     # Draw the big number
@@ -189,7 +233,7 @@ def create_shareable_card(
     count_bbox = draw.textbbox((0, 0), count_text, font=count_font)
     count_width = count_bbox[2] - count_bbox[0]
     count_height = count_bbox[3] - count_bbox[1]
-    count_y = 180
+    count_y = 100
     draw.text((center_x - count_width // 2, count_y), count_text, 
               fill=colors['accent'], font=count_font)
     
@@ -197,56 +241,87 @@ def create_shareable_card(
     label_text = "representatives"
     label_bbox = draw.textbbox((0, 0), label_text, font=label_font)
     label_width = label_bbox[2] - label_bbox[0]
-    label_y = count_y + count_height + 20
+    label_y = count_y + count_height + 10
     draw.text((center_x - label_width // 2, label_y), label_text,
               fill=colors['text'], font=label_font)
     
     # Draw action text (voted to + action)
     full_action = f"{vote_verb} {action_text}"
-    
-    # Wrap if needed
-    import textwrap
-    wrapped_action = textwrap.fill(full_action, width=28)
+    wrapped_action = textwrap.fill(full_action, width=30)
     action_lines = wrapped_action.split('\n')
     
-    action_y = label_y + 100
+    action_y = label_y + 70
     for line in action_lines:
         line_bbox = draw.textbbox((0, 0), line, font=action_font)
         line_width = line_bbox[2] - line_bbox[0]
         draw.text((center_x - line_width // 2, action_y), line,
                   fill=colors['text'], font=action_font)
-        action_y += 55
+        action_y += 48
+    
+    # Draw impact text (what this means)
+    wrapped_impact = textwrap.fill(impact_text, width=45)
+    impact_lines = wrapped_impact.split('\n')
+    impact_y = action_y + 25
+    for line in impact_lines:
+        line_bbox = draw.textbbox((0, 0), line, font=impact_font)
+        line_width = line_bbox[2] - line_bbox[0]
+        draw.text((center_x - line_width // 2, impact_y), line,
+                  fill=colors['accent'], font=impact_font)
+        impact_y += 35
+    
+    # Draw result and party breakdown
+    result_y = impact_y + 40
+    
+    # Result text (PASSED 217-211)
+    result_bbox = draw.textbbox((0, 0), result_text, font=result_font)
+    result_width = result_bbox[2] - result_bbox[0]
+    draw.text((center_x - result_width // 2, result_y), result_text,
+              fill=colors['text'], font=result_font)
+    
+    # Party breakdown
+    party_y = result_y + 42
+    party_bbox = draw.textbbox((0, 0), party_text, font=party_font)
+    party_width = party_bbox[2] - party_bbox[0]
+    draw.text((center_x - party_width // 2, party_y), party_text,
+              fill=colors['accent'], font=party_font)
     
     # Draw separator line
-    line_y = action_y + 60
+    line_y = party_y + 55
     line_margin = 150
     draw.line([(line_margin, line_y), (width - line_margin, line_y)], 
-              fill=colors['accent'], width=3)
+              fill=colors['accent'], width=2)
     
     # Draw call to action
-    cta_text = "Was your representative"
-    cta2_text = "one of them?"
-    
-    cta_y = line_y + 80
+    cta_text = "Was your representative one of them?"
+    cta_y = line_y + 35
     cta_bbox = draw.textbbox((0, 0), cta_text, font=cta_font)
     cta_width = cta_bbox[2] - cta_bbox[0]
     draw.text((center_x - cta_width // 2, cta_y), cta_text,
               fill=colors['text'], font=cta_font)
     
-    cta2_bbox = draw.textbbox((0, 0), cta2_text, font=cta_font)
-    cta2_width = cta2_bbox[2] - cta2_bbox[0]
-    draw.text((center_x - cta2_width // 2, cta_y + 50), cta2_text,
-              fill=colors['accent'], font=cta_font)
-    
-    # Draw bill number at bottom
+    # Draw footer: date and bill number
     bill_match = re.search(r'([HS]\.?R\.?\s*\d+)', analysis.get('bill_title', ''))
-    if bill_match:
-        bill_num = bill_match.group(1).replace(' ', '')
-        bill_font = _get_font(28, bold=False)
-        bill_bbox = draw.textbbox((0, 0), bill_num, font=bill_font)
-        bill_width = bill_bbox[2] - bill_bbox[0]
-        draw.text((center_x - bill_width // 2, height - 80), bill_num,
-                  fill=colors['text'], font=bill_font)
+    bill_num = bill_match.group(1).replace(' ', '') if bill_match else ''
+    
+    footer_y = height - 60
+    
+    # Format date if available
+    if vote_date:
+        # Convert mm/dd/yyyy to more readable format
+        try:
+            from datetime import datetime
+            dt = datetime.strptime(vote_date, "%m/%d/%Y")
+            date_str = dt.strftime("%B %d, %Y")
+        except:
+            date_str = vote_date
+    else:
+        date_str = ""
+    
+    footer_text = f"{date_str}    {bill_num}" if date_str else bill_num
+    footer_bbox = draw.textbbox((0, 0), footer_text, font=footer_font)
+    footer_width = footer_bbox[2] - footer_bbox[0]
+    draw.text((center_x - footer_width // 2, footer_y), footer_text,
+              fill=colors['text'], font=footer_font)
     
     # Save image
     if output_path is None:
